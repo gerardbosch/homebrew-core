@@ -486,6 +486,7 @@ coin3d
 coinutils
 colima
 colmap
+commandbox
 commitizen
 commitlint
 composer
@@ -523,6 +524,7 @@ countdown
 counterfeiter
 coursier
 cp2k
+cpanminus
 cpi
 cpm
 cpp-gsl
@@ -655,6 +657,7 @@ dive
 django-completion
 djhtml
 djl-serving
+djlint
 dlib
 dmenu
 dnscontrol
@@ -816,6 +819,7 @@ eva
 evince
 evtx
 exercism
+exiftool
 exim
 exiv2
 exodriver
@@ -850,6 +854,7 @@ fauna-shell
 faust
 favirecon
 fblog
+fcft
 fclones
 fd
 fdk-aac-encoder
@@ -896,6 +901,7 @@ flatbuffers
 flawz
 fleet-cli
 flint
+flit
 flix
 flowpipe
 fluent-bit
@@ -915,6 +921,7 @@ fontconfig
 fontforge
 fonts-encodings
 fonttools
+foot
 fop
 forbidden
 forcecli
@@ -1090,6 +1097,7 @@ goffice
 gofumpt
 gojq
 gokey
+goku
 golang-migrate
 golangci-lint
 golangci-lint-langserver
@@ -1176,6 +1184,7 @@ gulp-cli
 gum
 gupnp
 gupnp-tools
+gwt
 gwyddion
 gxml
 gyb
@@ -1351,6 +1360,7 @@ jose
 jp2a
 jpeg-turbo
 jpeg-xl
+jprq
 jql
 jr
 jreleaser
@@ -1595,6 +1605,7 @@ libomp
 libopenmpt
 liboqs
 liborigin
+libosinfo
 libpanel
 libpano
 libpcap
@@ -1813,6 +1824,7 @@ mfem
 micro
 micromamba
 micronaut
+microplane
 micropython
 microsocks
 mighttpd2
@@ -1892,6 +1904,7 @@ mu
 mubeng
 muffet
 mujs
+multi-git-status
 multitail
 muon
 murex
@@ -1957,6 +1970,7 @@ nftables
 nginx
 ngt
 nickel
+nickle
 nifi
 nifi-registry
 nim
@@ -1972,6 +1986,7 @@ node-build
 node-sass
 node@18
 node@20
+node@22
 node_exporter
 nodeenv
 nomino
@@ -1979,6 +1994,7 @@ nopoll
 noseyparker
 notation
 notcurses
+notify
 nox
 npm-check-updates
 npth
@@ -2034,6 +2050,7 @@ oksh
 okta-aws-cli
 okta-awscli
 okteto
+ol
 ollama
 omega
 omniorb
@@ -2110,6 +2127,7 @@ osc
 osctrl-cli
 osi
 osinfo-db
+osinfo-db-tools
 osm2pgsql
 ospray
 osslsigncode
@@ -2147,6 +2165,7 @@ parsedmarc
 partio
 pass-git-helper
 passenger
+passt
 pastel
 patat
 patchelf
@@ -2445,6 +2464,7 @@ rsgain
 rswift
 rsyncy
 rsyslog
+rtl_433
 rtorrent
 rubberband
 ruby
@@ -2518,6 +2538,7 @@ sdl2
 seal
 seam
 seaweedfs
+sec
 secp256k1
 securefs
 selene
@@ -2525,6 +2546,7 @@ selenium-server
 semgrep
 sentencepiece
 seqkit
+sequoia-sq
 ser2net
 serialosc
 serpl
@@ -2905,12 +2927,14 @@ unicorn
 unison
 unisonlang
 universal-ctags
+unxip
 urdfdom
 urdfdom_headers
 uriparser
 urlscan
 usb.ids
 usbredir
+usbutils
 userspace-rcu
 util-linux
 util-macros
@@ -3025,6 +3049,7 @@ webtorrent-cli
 weechat
 wego
 werf
+west
 wgcf
 whistle
 whois
@@ -3038,6 +3063,7 @@ wireshark
 witness
 wolfmqtt
 wolfssl
+woob
 woodpecker-cli
 woof-doom
 wpebackend-fdo
@@ -3132,6 +3158,7 @@ zfind
 zig
 zigmod
 zipkin
+zizmor
 zk
 zlib
 zlib-ng

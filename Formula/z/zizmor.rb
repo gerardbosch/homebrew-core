@@ -1,17 +1,17 @@
 class Zizmor < Formula
-  desc "CLI tool for finding security issues in GitHub Actions setups"
+  desc "Find security issues in GitHub Actions setups"
   homepage "https://github.com/woodruffw/zizmor"
-  url "https://github.com/woodruffw/zizmor/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "d743533d553538b5392ea3bfc45b27d1b55606280babd9418f9cfe7af0273ec0"
+  url "https://github.com/woodruffw/zizmor/archive/refs/tags/v0.1.5.tar.gz"
+  sha256 "a2c7d1ff25b6c08a212c876c99231c0a33f9b7b1059dd6a1e0c33f79c7ff1374"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "94b500eeef144a39d45dd2c64bcc4a7c038ac6e95b1547bbbe9e239aa2115ef2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aae6e1e0b06334ba258ed8c0260c19dd18a121f908eed621eb99379db8b138ee"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f7b195eddd29d8ace5ea9bed88110a01289b701729012a659db877b6b1c83a85"
-    sha256 cellar: :any_skip_relocation, sonoma:        "04d2c86f225b71b76bf83f24825fb262ed9df49f9f0fd559c4723e6e6509cb9d"
-    sha256 cellar: :any_skip_relocation, ventura:       "ce38eace22b227caffc1ac5f58bdcd6f31c7398fe4013f9cb83f798eedf6d5d1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b636fb59115540ce9bfa1f9e84d7118c8d5903a85cebf6fe7d5dd7a76bc3a20c"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2ca13418a2c5feeae8125fd1d42b419732ff0ef0d79cf9f42389d028ad4cb63d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e349ccbd38a40966fb5a310bfaefa43b5b0944d0cef4da4353c6afc2ea040507"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cc9d4762d8200e769db38c27023f6591bd2775323e26c934b4256c8a2a2474d9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "cf685ff99cabd70d9ec0c904667ca2d3512c3aa4cc47a3856df9f09df3a749f3"
+    sha256 cellar: :any_skip_relocation, ventura:       "0a9376fdb09f82e0c0709a59c609bd00662bfae461b9c9aa617a34801eb27059"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7be4226889f26a33081fb0d2bcb051a070269bbd3dc4045e1b5ea06c47992b2b"
   end
 
   depends_on "pkg-config" => :build

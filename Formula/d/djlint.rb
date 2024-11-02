@@ -3,19 +3,18 @@ class Djlint < Formula
 
   desc "Lint & Format HTML Templates"
   homepage "https://djlint.com"
-  url "https://files.pythonhosted.org/packages/a4/ee/ac8ee551ec04d5a214e62d008f40bf309574f103416482e03fb61fbad61c/djlint-1.35.2.tar.gz"
-  sha256 "318de9d4b9b0061a111f8f5164ecbacd8215f449dd4bd5a76d2a691c815ee103"
+  url "https://files.pythonhosted.org/packages/87/4b/78205d41de135f8c36515f8b015a2e923492926576fe7ca76abb3aee8027/djlint-1.35.4.tar.gz"
+  sha256 "d4a1342d83e65171059925b87ab351a1d5201289a764f9e092ef7a99e312554e"
   license "GPL-3.0-or-later"
   head "https://github.com/djlint/djLint.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "091bed21d32b9ff2262763230a9868cf6daaba98990ce743c6f96362ffc83058"
-    sha256 cellar: :any,                 arm64_sonoma:  "cd671663ffd2b3f74bacc3f8e283be9d56db4d7d2a4830dfaa5cb94b344b54dd"
-    sha256 cellar: :any,                 arm64_ventura: "e5475003140e226d0a878349272351cf2646e31916c8476e6cf33555cc7f9e12"
-    sha256 cellar: :any,                 sonoma:        "e2e31dc4a8f0b68e47f01100fbba2a4101581832e39fb5070779fe867c7a361a"
-    sha256 cellar: :any,                 ventura:       "93f1475e06b2ab21badf46c9d32285df5d2526fda2842a63b6ca135d8624a81b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "82d6f788dc20965e44d4f19d1610ef237cef267aaff1b6b720dbfddb9e3a931b"
+    sha256 cellar: :any,                 arm64_sequoia: "680f963515cac34d79aab75d76ebdec2b554ed6b3609504a9319cfae3a7fb16d"
+    sha256 cellar: :any,                 arm64_sonoma:  "b84209233ec157af8ba4f3e63088488f844a196df18a739ca209486ed14f3f0e"
+    sha256 cellar: :any,                 arm64_ventura: "ba84d6e214e3d63778f6760d8193a1517a71692cc5f63110bc0a3667ec546222"
+    sha256 cellar: :any,                 sonoma:        "43b30632978f6b129e4f361213239ba78e360936da1d8d7aec63acb0f4f615de"
+    sha256 cellar: :any,                 ventura:       "acc5409db9486ef069c496b78a56e7441d142c0a61c6a6e85e6e272c61a3ffb9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1fba28b2f12e37deda1f10b233a00c8d2795030f184f00e7486f60c76ba9f093"
   end
 
   depends_on "libyaml"
@@ -82,8 +81,13 @@ class Djlint < Formula
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/58/83/6ba9844a41128c62e810fddddd72473201f3eacde02046066142a2d96cc5/tqdm-4.66.5.tar.gz"
-    sha256 "e1020aef2e5096702d8a025ac7d16b1577279c9d63f8375b63083e9a5f0fcbad"
+    url "https://files.pythonhosted.org/packages/e9/34/bef135b27fe1864993a5284ad001157ee9b5538e859ac90f5b0e8cc8c9ec/tqdm-4.66.6.tar.gz"
+    sha256 "4bdd694238bef1485ce839d67967ab50af8f9272aab687c0d7702a01da0be090"
+  end
+
+  resource "typing-extensions" do
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   def install

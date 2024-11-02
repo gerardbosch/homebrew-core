@@ -3,18 +3,18 @@ class Awscli < Formula
 
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
-  url "https://github.com/aws/aws-cli/archive/refs/tags/2.18.16.tar.gz"
-  sha256 "6ffbbcc66be22da8d450185765a80aad4be0e0d87f0d7b434fed9919e521997e"
+  url "https://github.com/aws/aws-cli/archive/refs/tags/2.19.1.tar.gz"
+  sha256 "c0785d79b6d175f97255f0c84ba963fa96ff1f02b6e6cea9e2892657be255ab0"
   license "Apache-2.0"
   head "https://github.com/aws/aws-cli.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "997daa739e4e2c34b40bb6e4e7501625c0e1b1fbd01ae6d905b6a19782a4f530"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4078607c4151d2bdb8aa15ded0a631a4460835da040d8e596895efe6248fa7da"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "6ceb3554b347799caefd2d31e6bd1b5cf420a9e2de0a2f54e111e1dab20d50fd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "e0021c555844d95f792b7cf86ac6a32745c6180e20ef86cdbd5b34a14ea977e3"
-    sha256 cellar: :any_skip_relocation, ventura:       "39f9d1bb7b03b0e723ec4220ed9447db50e96bcdf33e8705d7dd604d454f418c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b477b840b972d2aaf697e8fb22f321264636ccc5413577b522210a5e5c27ba85"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a140b62a6a23b474738b1ec488008db721b9ea3ad6c5e514bf9ff078bf290c91"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "abc83c94e151b526791babf322decc534d2164da6b81e21cbc13b080fa990e61"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "fefa19d2c48535b589644b207bf7be57715865f0c6dceb2c44984d490d1b299b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "48db2696a48b43499ee7d559391b9d323fe64e13d0f73f45c925f484bcabe1c7"
+    sha256 cellar: :any_skip_relocation, ventura:       "025a44aea7d0d8880cdf69d278e09ed743a9bf091a2307e1c99cef71100c1531"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0cbfd679d43f6b42a5cb893b2d714c04d17ff572b109a297ae84bb79a21a69e1"
   end
 
   depends_on "cmake" => :build

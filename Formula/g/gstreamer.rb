@@ -2,29 +2,15 @@ class Gstreamer < Formula
   desc "Development framework for multimedia applications"
   homepage "https://gstreamer.freedesktop.org/"
   license all_of: ["LGPL-2.0-or-later", "LGPL-2.1-or-later", "MIT"]
-  revision 1
 
   stable do
-    url "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.8/gstreamer-1.24.8.tar.bz2"
-    sha256 "41fd1325acebb69cec23a46c6c2fe68b4bcf9b25c392b94ffadb3b222bb2422b"
-
-    # Fix build failure with new gobject-introspection
-    # https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7554
-    patch do
-      url "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/f1aedd65f4c276578b767b4555ba7cdf68fe024b.diff"
-      sha256 "830de511c0c6c53fc96b16acc03d433c0942ab5686afca5d3386dd77cc7d7c13"
-    end
-
-    # Backport fix for build of gst-plugins-rs when using uninstalled pkgconfig files
-    patch do
-      url "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/6ce72488face35277643d3781d3da7c4f95d5e1e.diff"
-      sha256 "e8526ba4da7a92904a0e55608bacb3ca823f60c398a922877b5945f65c5ddbfb"
-    end
+    url "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.9/gstreamer-1.24.9.tar.bz2"
+    sha256 "3b284fa1c3b5cf0b1ad6eab64d506c2e1d62e37578ef8c0eb6dce3668ae76b77"
 
     # When updating this resource, use the tag that matches the GStreamer version.
     resource "rs" do
-      url "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/gstreamer-1.24.8/gst-plugins-rs-gstreamer-1.24.8.tar.bz2"
-      sha256 "a355edefea2d2de555fad9702079fe219e6c071198fe811a4692b5b48cb7b139"
+      url "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/gstreamer-1.24.9/gst-plugins-rs-gstreamer-1.24.9.tar.bz2"
+      sha256 "417881ccd886e0962261f9181faa341f1073ee262775e04f2e8aedaa9ab97fb1"
 
       # Backport support for newer `dav1d`
       # upstream commit ref, https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/commit/7e1ab086de00125bc0d596f9ec5d74c9b82b2cc0
@@ -41,13 +27,12 @@ class Gstreamer < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 arm64_sequoia: "d2ee8157fe421ba6c198e2245e1e0c2b5485520122dfa9f1a4455679c29c95ac"
-    sha256 arm64_sonoma:  "988ef37481126b708af1669ed06787eba7efa35314147a5df354c91d6b66b2a6"
-    sha256 arm64_ventura: "e0d82e2d13b0222a22a2a1ff70cec1fddaec3331469f5a77f3db95d87c730177"
-    sha256 sonoma:        "64c4598623a5ff826e297ef07071da6e10ace4079ab293058f66e4bb61e908f0"
-    sha256 ventura:       "7fd971545ff09902d15c4916ed90f8cc4fdc65af4dfcd604674f10eb01779b74"
-    sha256 x86_64_linux:  "8332e6c7935ce2b5e36daa66682131dc160d54c9283e42e3af537b92c27bd850"
+    sha256 arm64_sequoia: "a59de05bbdd7b4315f9529f58a629418d0ac6940a2ccc10c498b1b82d788618b"
+    sha256 arm64_sonoma:  "184fb2e198d2c9cb58f1505f3ef2f7b612c121f5e01361bfb886a87755111a48"
+    sha256 arm64_ventura: "21f113cda43ea3453ccf38f8d1f1063874d080198ffd8f1b832b69f6ba597976"
+    sha256 sonoma:        "3a61ee545ecd40fa8a3bf305b0214dc3c0e3baa88ac82468f261bec08d5a19ca"
+    sha256 ventura:       "b4f1ef41a80f2caef924c46f62c85e58de0dccd2827dd211c72d76de430cae93"
+    sha256 x86_64_linux:  "f1c7e6129f1b872f7dba50b1d9c5118b669f63ef480fafbe754c231195c059e0"
   end
 
   head do

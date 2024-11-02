@@ -3,18 +3,18 @@ class Mlx < Formula
 
   desc "Array framework for Apple silicon"
   homepage "https://github.com/ml-explore/mlx"
-  url "https://github.com/ml-explore/mlx/archive/refs/tags/v0.19.1.tar.gz"
-  sha256 "b6b76d5ddbe4ff7c667425fec2a67dc0abd258b734e708b1b45fd73910a2dc83"
+  url "https://github.com/ml-explore/mlx/archive/refs/tags/v0.19.3.tar.gz"
+  sha256 "1d53ad70eaae89aed42f763c1c5e44668a9b14f6ed194da85e5705a37e50dca6"
   # Main license is MIT while `metal-cpp` resource is Apache-2.0
   license all_of: ["MIT", "Apache-2.0"]
   head "https://github.com/ml-explore/mlx.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any, arm64_sequoia: "fae107bca31ed887a7453c0845d0c66f1cf45b18b09e0f7698e74f602880defb"
-    sha256 cellar: :any, arm64_sonoma:  "a9b070476c444b7407224965cec8a49b12f02b92b042dae2e9d40ab12a2e6182"
-    sha256 cellar: :any, arm64_ventura: "d7e79b2ea1eec1da86b1a885d4f2c22ff01473012358b6497b281b479db057dc"
-    sha256 cellar: :any, sonoma:        "d6a32fecfa02768d75db1c0c946e6445b9352932f0d0d3610a460c770e13e52f"
-    sha256 cellar: :any, ventura:       "338bd1feb8f6fe12e15088c988c8202065afd566f5fcab58deafb5800106a11f"
+    sha256 cellar: :any, arm64_sequoia: "53d4d36ee979de8a24bd10f82beb516ec8df071322decf1414eae63c21a28332"
+    sha256 cellar: :any, arm64_sonoma:  "cd8db1b575eb52bae1f4fb84a582c15e73ef3983323a5d1aa616908ec2c5eca8"
+    sha256 cellar: :any, arm64_ventura: "29edffa90d370a54c59be479318ca26383e9dc6a4b5d8ad619970d68363c4d84"
+    sha256 cellar: :any, sonoma:        "f2ae59e427bd699d49fddd886688d7400ff617bda96017c1a0048c69f7783fc2"
+    sha256 cellar: :any, ventura:       "6d063bf9bd4a658c8cb1edbdfab4a2ed7dd83b5daba272989fad8be9b7d73c0d"
   end
 
   depends_on "cmake" => :build
@@ -52,13 +52,6 @@ class Mlx < Formula
 
   def python3
     "python3.13"
-  end
-
-  # Fix running tests in VMs.
-  # https://github.com/ml-explore/mlx/pull/1537
-  patch do
-    url "https://github.com/ml-explore/mlx/commit/3f425113e8e1e8a142e3655e6eef26ed95e68594.patch?full_index=1"
-    sha256 "8ac529f592fc3ff5af49882ef8c3129969dbfd7037b388952ae42f1fc0b2d8e7"
   end
 
   def install

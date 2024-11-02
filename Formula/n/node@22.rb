@@ -1,8 +1,8 @@
 class NodeAT22 < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v22.10.0/node-v22.10.0.tar.xz"
-  sha256 "3180710d3130ad9df01466abf010e408d41b374be54301d1480d10eca73558e0"
+  url "https://nodejs.org/dist/v22.11.0/node-v22.11.0.tar.xz"
+  sha256 "bbf0297761d53aefda9d7855c57c7d2c272b83a7b5bad4fea9cb29006d8e1d35"
   license "MIT"
 
   livecheck do
@@ -11,12 +11,12 @@ class NodeAT22 < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "528222d35a5ae846cd673c0b91a77e6fa3050d2de0c94091cd1b6c4a39656855"
-    sha256 arm64_sonoma:  "53825ab98fe302132d5dafe83eb0c10d8d46ebdc8c8a1fb388cf8457d8aa3015"
-    sha256 arm64_ventura: "68baa5fc58da403c1814e3bec8672d51e355de633f0021b23250c6d06f52f42b"
-    sha256 sonoma:        "f6bb645a21a91bbe99c9218e4122afa78e2714332be2adc84092cf422eb195cd"
-    sha256 ventura:       "80345d2d38bc6feb5c6134abe390cb527525854859a2b2386c715d026cac7509"
-    sha256 x86_64_linux:  "022797bdca863afb7a3ae77ea096fca338e2f75b613355f75e649618388b21bf"
+    sha256 arm64_sequoia: "49c1faf86ce77ef26345dd9c2f005839dd13491c71c125464fd028f5ec999530"
+    sha256 arm64_sonoma:  "5eeedf96a1c07d18c1ad6f8f19e503d193bf884c047ff387b7e3b4e966e73c40"
+    sha256 arm64_ventura: "83cef9f2dd852a0c7bdae73604bef7d9cc716319f591ca03e23a05d1b983ba47"
+    sha256 sonoma:        "2e00368aacc852f9693fd2e452a51d2b5fbbfb28299cb3b8dc39aa91158280d9"
+    sha256 ventura:       "5b1f5ddbfe5135908a0fa29a5895e746ff8121fddf1e5ba9464c5ffb5f143e59"
+    sha256 x86_64_linux:  "98af586420519db5648f5fb51a5dbcebd3ee0028b2bbbb151811f4a4d53cdb5d"
   end
 
   keg_only :versioned_formula
@@ -29,7 +29,7 @@ class NodeAT22 < Formula
   depends_on "python@3.13" => :build
   depends_on "brotli"
   depends_on "c-ares"
-  depends_on "icu4c@75"
+  depends_on "icu4c@76"
   depends_on "libnghttp2"
   depends_on "libuv"
   depends_on "openssl@3"
@@ -49,6 +49,12 @@ class NodeAT22 < Formula
   end
 
   fails_with gcc: "5"
+
+  # Backport support for ICU 76+
+  patch do
+    url "https://github.com/nodejs/node/commit/81517faceac86497b3c8717837f491aa29a5e0f9.patch?full_index=1"
+    sha256 "79a5489617665c5c88651a7dc364b8967bebdea5bdf361b85572d041a4768662"
+  end
 
   def install
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1100)

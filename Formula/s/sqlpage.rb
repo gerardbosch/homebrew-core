@@ -1,19 +1,18 @@
 class Sqlpage < Formula
   desc "Web application framework, for creation of websites with simple database queries"
   homepage "https://sql.ophir.dev/"
-  url "https://github.com/lovasoa/SQLpage/archive/refs/tags/v0.29.0.tar.gz"
-  sha256 "77dde6ec60f34d008861a894dbcdcd50db3646890d1cf3fbdafdf36912803ea0"
+  url "https://github.com/lovasoa/SQLpage/archive/refs/tags/v0.30.1.tar.gz"
+  sha256 "f91f3798614c27146979d6b1127a7a1f24707d63720665bd37aff66ad5e22b36"
   license "MIT"
   head "https://github.com/lovasoa/SQLpage.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2d179885fc95ba49073d90e82a3834b9c168fb6adcb8e2165a4fcc4a6732e5b6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "36da0810157c8a89cbd3e8e0905ca9dbc2dff4f254c05ca3b4a57a4c630e18aa"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "5a5ba24214f0bc6a698a82c55df1a09d54c133fcdc97e22d43f481b21a60169a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "55a9213995b23782bcf5dbdc79b490c05d6361c995822e68df29d0d643974dfa"
-    sha256 cellar: :any_skip_relocation, ventura:       "64073b29ba0313173c03e4acf06d7e24ac3b8a60b2faecd3eb972a7e7dcc1240"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2c4c85a46c9548d6fbb914561608032076b97df3d5fde775d3d19100b9fb957f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "29ebde56d3e50773d9d75589bafbf4c66cf849f8c04249abf36041eac9e4f535"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "469b5500fa326d9310de22d895f9af4b437df8cbbc565d83efc6157d0f2a2109"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "57503e66ebe5cdb17ff1da6975297f1aa9908dcbfbf622413116049d81ec48c7"
+    sha256 cellar: :any_skip_relocation, sonoma:        "1e1971ce65f663cd963453d3e7ded079e01914d828fa527d57ff30b8ed32940f"
+    sha256 cellar: :any_skip_relocation, ventura:       "a77d0b17e4fe5e94535ce71f2c7fee1027403720dca5ca36277afd7c4727462f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "63e431755a67019ab3944228a37ca069e4eea322287218e88eafeb758add3956"
   end
 
   depends_on "rust" => :build
