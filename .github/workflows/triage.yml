@@ -91,7 +91,7 @@ jobs:
           close: true
 
   triage:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       issues: write
@@ -301,6 +301,7 @@ jobs:
                 imath|\
                 jasper|\
                 jpeg-turbo|\
+                jpeg-xl|\
                 libcap|\
                 libgcrypt|\
                 libgpg-error|\
@@ -361,6 +362,7 @@ jobs:
               path: "Formula/.+/(\
                 alsa-lib|\
                 glib|\
+                libcap|\
                 libva|\
                 libxml2|\
                 python@3.12|\

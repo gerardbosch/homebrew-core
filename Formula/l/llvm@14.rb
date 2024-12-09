@@ -48,9 +48,6 @@ class LlvmAT14 < Formula
     depends_on "elfutils" # openmp requires <gelf.h>
   end
 
-  # Fails at building LLDB
-  fails_with gcc: "5"
-
   # Fix build with Xcode 15
   # https://github.com/spack/spack/issues/40158
   # Backport of https://reviews.llvm.org/D130060
@@ -449,11 +446,11 @@ class LlvmAT14 < Formula
     end
 
     # Testing mlir
-    (testpath/"test.mlir").write <<~EOS
+    (testpath/"test.mlir").write <<~MLIR
       func @bad_branch() {
         br ^missing  // expected-error {{reference to an undefined block}}
       }
-    EOS
+    MLIR
     system bin/"mlir-opt", "--verify-diagnostics", "test.mlir"
 
     (testpath/"clangformattest.c").write <<~C
@@ -467,10 +464,10 @@ class LlvmAT14 < Formula
     # We explicitly call `"python3"` instead of the method to be able to do
     # `uses_from_macos "python" => :test`.
     with_env(PYTHONPATH: prefix/Language::Python.site_packages("python3")) do
-      system "python3", "-c", <<~EOS
+      system "python3", "-c", <<~PYTHON
         from clang import cindex
         cindex.Config().get_cindex_library()
-      EOS
+      PYTHON
     end
 
     # Ensure LLVM did not regress output of `llvm-config --system-libs` which for a time
@@ -490,6 +487,7 @@ class LlvmAT14 < Formula
     end
   end
 end
+
 __END__
 --- a/compiler-rt/lib/sanitizer_common/sanitizer_platform_limits_posix.cpp
 +++ b/compiler-rt/lib/sanitizer_common/sanitizer_platform_limits_posix.cpp

@@ -1,18 +1,17 @@
 class Pymupdf < Formula
   desc "Python bindings for the PDF toolkit and renderer MuPDF"
   homepage "https://pymupdf.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/e0/6b/6bd735144a190d26dcc23f98b4aae0e09b259cc4c87bba266a39b7b91f56/PyMuPDF-1.24.14.tar.gz"
-  sha256 "0eed9f998525eaf39706dbf2d0cf3162150f0f526e4a36b1748ffa50bde581ae"
+  url "https://files.pythonhosted.org/packages/d2/9e/ec6139116b551922789eb72e710371ddd770a2236fbd5302c2a58670ebbc/pymupdf-1.25.0.tar.gz"
+  sha256 "9e5a33816e4b85ed6a01545cada2b866fc280a3b6478bb8e19c364532adf6692"
   license "AGPL-3.0-only"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "e3636428dd744d344917b8fbb63b0c82d80688304cfd99247510f5f84a25e1e1"
-    sha256 cellar: :any,                 arm64_sonoma:  "e6f42d332d2925ac2270a981f391a5a4ddbd18574ee9935cfd1a4e05bf4d265e"
-    sha256 cellar: :any,                 arm64_ventura: "5d29e78e6643ec37d15e3f463cba6c6814bca30964c5875281495c6d1271ca8c"
-    sha256 cellar: :any,                 sonoma:        "e3b1fea8acf2db4f1b62d077d8ba1bc7ba33e6e94ef2422284547cd6884682c8"
-    sha256 cellar: :any,                 ventura:       "d8176094ed6332c97de6aa696404c0336229bda46ed058059e1d22881d746640"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c48b2b9d0a491a85b8a2b64e81e008ec5b9f024db1bc2808888169cef44f1987"
+    sha256 cellar: :any,                 arm64_sequoia: "8bf25283fa3c5cac15aac6ceae8cf21a453ce0e5d262cd33e3cb0c5c61b04bd3"
+    sha256 cellar: :any,                 arm64_sonoma:  "658c1af105b0e04459661c957a89da3c88d1e41c17a0d71698f9ce12c3048f5c"
+    sha256 cellar: :any,                 arm64_ventura: "df735af404008080316a71ce707e956b2ec97f198b43f1fcf3de05d88c191159"
+    sha256 cellar: :any,                 sonoma:        "b332010dd3ea76c8edf92d6ef81cf3b5e383a67442f71e3f2f507f3401bfa517"
+    sha256 cellar: :any,                 ventura:       "b7087c63a343959719e9080b696d78a6876b26557fb5cbe73ad8153b56574a73"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3d92eb542ce63a3f0f390ceb4057eb20c44dbbcbe2fb5b1df85279f3e757a30d"
   end
 
   depends_on "freetype" => :build

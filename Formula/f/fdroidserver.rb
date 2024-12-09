@@ -3,18 +3,18 @@ class Fdroidserver < Formula
 
   desc "Create and manage Android app repositories for F-Droid"
   homepage "https://f-droid.org"
-  url "https://files.pythonhosted.org/packages/7b/dd/9a37d36aadf87ce469c70713887dd9dfa6881010d5b0c9471bb181a4f4f2/fdroidserver-2.3.1.tar.gz"
-  sha256 "b0473bd62976e51a13d58a2e626627773cdcf3df67e747c7f1572afc6c71c89d"
+  url "https://files.pythonhosted.org/packages/51/1b/ec2cae4ba139f72ec4e178618cd58ec103cce1629cb32e6c654adad9a768/fdroidserver-2.3.2.tar.gz"
+  sha256 "b50212b5f25544eb6e330afe757bdee0043f26b4e3cdff7b0f056fff37a0f36e"
   license "AGPL-3.0-or-later"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "16eb1b8716f716d5d7dd828dd05d4987e22a26a50820a89d018b3e9054ae9b04"
-    sha256 cellar: :any,                 arm64_sonoma:  "69297f50d234b63ec53a0674e0031e48beaaebab0b2e5c3c69c920595f9b73b0"
-    sha256 cellar: :any,                 arm64_ventura: "5480d2cbc3dd6afb157b1fd5912e15d9348e9d48aa1a068788c50d5d95b708a6"
-    sha256 cellar: :any,                 sonoma:        "b111eacad9729c19f47aae433bdf313a588ee71ad809679266b964d05260faa6"
-    sha256 cellar: :any,                 ventura:       "8753b931d0a3a102f7466be03ae5687f1523406745d9927307f35eb934590e57"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ee044ccbe6fe0a0a776548526168190d18b6dafa4fc9ddb2d11bfa46ecd87150"
+    rebuild 2
+    sha256 cellar: :any,                 arm64_sequoia: "439c8007d2c99583d4850bf97433708034f1bc90a8dfd76c10a5624afca909b8"
+    sha256 cellar: :any,                 arm64_sonoma:  "4000d5188b58ea6f1ced3d1214ce6756513e7b63c627f4e9e561d006ee40403c"
+    sha256 cellar: :any,                 arm64_ventura: "86f00e0a6e182a74dfb548a5e4330d4cf45d478a9d898a094e6635bf83ee8c56"
+    sha256 cellar: :any,                 sonoma:        "4fdaec3d321aca73e7ec4f1f460ea718dfa9f31fa1f5fb3f004374d809f373da"
+    sha256 cellar: :any,                 ventura:       "dbe39653fd99f6a35135b9c3cdb4d48f8f7badea92d0debd2fab2f52c7009995"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6df959d626de20dc0f268a3b57ef59fdbbab36436bd3dd94736386e6f9559bf4"
   end
 
   depends_on "ninja" => :build
@@ -24,12 +24,12 @@ class Fdroidserver < Formula
   depends_on "certifi"
   depends_on "cryptography"
   depends_on "freetype"
-  depends_on "libmagic"
+  depends_on "libmagic"  # obviates the need for puremagic
   depends_on "libsodium" # for pynacl
   depends_on "libyaml"
   depends_on "numpy"
   depends_on "pillow"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
   depends_on "qhull"
   depends_on "rclone"
   depends_on "s3cmd"
@@ -153,8 +153,8 @@ class Fdroidserver < Formula
   end
 
   resource "ipython" do
-    url "https://files.pythonhosted.org/packages/85/e0/a3f36dde97e12121106807d80485423ae4c5b27ce60d40d4ab0bab18a9db/ipython-8.29.0.tar.gz"
-    sha256 "40b60e15b22591450eef73e40a027cf77bd652e757523eebc5bd7c7c498290eb"
+    url "https://files.pythonhosted.org/packages/d8/8b/710af065ab8ed05649afa5bd1e07401637c9ec9fb7cfda9eac7e91e9fbd4/ipython-8.30.0.tar.gz"
+    sha256 "cb0a405a306d2995a5cbb9901894d240784a9f341394c6ba3f4fe8c6eb89ff6e"
   end
 
   resource "jedi" do
@@ -242,11 +242,6 @@ class Fdroidserver < Formula
     sha256 "5f4e983f40564c576c7c8635ae88db5956bb2229d7e9237d03b3c0b0190eaf42"
   end
 
-  resource "puremagic" do
-    url "https://files.pythonhosted.org/packages/09/2d/40599f25667733e41bbc3d7e4c7c36d5e7860874aa5fe9c584e90b34954d/puremagic-1.28.tar.gz"
-    sha256 "195893fc129657f611b86b959aab337207d6df7f25372209269ed9e303c1a8c0"
-  end
-
   resource "pycountry" do
     url "https://files.pythonhosted.org/packages/76/57/c389fa68c50590881a75b7883eeb3dc15e9e73a0fdc001cdd45c13290c92/pycountry-24.6.1.tar.gz"
     sha256 "b61b3faccea67f87d10c1f2b0fc0be714409e8fcdcc1315613174f6466c10221"
@@ -277,6 +272,11 @@ class Fdroidserver < Formula
     sha256 "37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"
   end
 
+  resource "python-magic" do
+    url "https://files.pythonhosted.org/packages/da/db/0b3e28ac047452d079d375ec6798bf76a036a08182dbb39ed38116a49130/python-magic-0.4.27.tar.gz"
+    sha256 "c1ba14b08e4a5f5c31a302b7721239695b2f0f058d125bd5ce1ee36b9d9d3c3b"
+  end
+
   resource "python-vagrant" do
     url "https://files.pythonhosted.org/packages/2b/3f/2e42a44c9705d72d9925fe8daf00f31bcf82e8b84ec5a752a8a1357c3ef8/python-vagrant-1.0.0.tar.gz"
     sha256 "a8fe93ccf2ff37ecc95ec2f49ea74a91a6ce73a4db4a16a98dd26d397cfd09e5"
@@ -305,11 +305,6 @@ class Fdroidserver < Formula
   resource "sdkmanager" do
     url "https://files.pythonhosted.org/packages/b8/35/34c209e688fbc86a99054d9ab86d9ea3656ba2d7986117b9113209528bcb/sdkmanager-0.6.10.tar.gz"
     sha256 "e08b402a4b8d19aa6c983c8cfc3328de5c5d2fdfaf96f55a2b67610e0297d599"
-  end
-
-  resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/43/54/292f26c208734e9a7f067aea4a7e282c080750c4546559b58e2e45413ca0/setuptools-75.6.0.tar.gz"
-    sha256 "8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"
   end
 
   resource "six" do
@@ -348,10 +343,6 @@ class Fdroidserver < Formula
   end
 
   def install
-    # Work around ruamel.yaml.clib not building on Xcode 15.3, remove after a new release
-    # has resolved: https://sourceforge.net/p/ruamel-yaml-clib/tickets/32/
-    ENV.append_to_cflags "-Wno-incompatible-function-pointer-types" if DevelopmentTools.clang_build_version >= 1500
-
     venv = virtualenv_install_with_resources without: "matplotlib"
 
     # `matplotlib` needs extra inputs to use system libraries.
@@ -424,7 +415,7 @@ class Fdroidserver < Formula
         UpdateCheckMode: None
       YAML
 
-      system bin/"fdroid", "checkupdates", "--verbose", "--allow-dirty"
+      system bin/"fdroid", "install", "--verbose", "--yes"
       system bin/"fdroid", "lint", "--verbose"
       system bin/"fdroid", "rewritemeta", "fake", "--verbose"
       system bin/"fdroid", "scanner", "--verbose"
