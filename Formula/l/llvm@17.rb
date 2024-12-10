@@ -45,9 +45,6 @@ class LlvmAT17 < Formula
     depends_on "elfutils" # openmp requires <gelf.h>
   end
 
-  # Fails at building LLDB
-  fails_with gcc: "5"
-
   # Fix arm64 misoptimisation in some cases.
   # https://github.com/Homebrew/homebrew-core/issues/158957
   patch do
@@ -405,7 +402,7 @@ class LlvmAT17 < Formula
     end
 
     # Testing mlir
-    (testpath/"test.mlir").write <<~EOS
+    (testpath/"test.mlir").write <<~MLIR
       func.func @main() {return}
 
       // -----
@@ -417,7 +414,7 @@ class LlvmAT17 < Formula
 
       // expected-error @+1 {{redefinition of symbol named 'foo'}}
       func.func @foo() { return }
-    EOS
+    MLIR
     system bin/"mlir-opt", "--split-input-file", "--verify-diagnostics", "test.mlir"
 
     (testpath/"scanbuildtest.cpp").write <<~CPP
@@ -442,10 +439,10 @@ class LlvmAT17 < Formula
 
     # This will fail if the clang bindings cannot find `libclang`.
     with_env(PYTHONPATH: prefix/Language::Python.site_packages(python3)) do
-      system python3, "-c", <<~EOS
+      system python3, "-c", <<~PYTHON
         from clang import cindex
         cindex.Config().get_cindex_library()
-      EOS
+      PYTHON
     end
 
     # Ensure LLVM did not regress output of `llvm-config --system-libs` which for a time

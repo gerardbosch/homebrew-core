@@ -47,9 +47,6 @@ class LlvmAT16 < Formula
     depends_on "elfutils" # openmp requires <gelf.h>
   end
 
-  # Fails at building LLDB
-  fails_with gcc: "5"
-
   # Fixes https://github.com/mesonbuild/meson/issues/11642
   patch do
     url "https://github.com/llvm/llvm-project/commit/ab8d4f5a122fde5740f8c084c8165f51a26c93c7.patch?full_index=1"
@@ -451,7 +448,7 @@ class LlvmAT16 < Formula
     end
 
     # Testing mlir
-    (testpath/"test.mlir").write <<~EOS
+    (testpath/"test.mlir").write <<~MLIR
       func.func @main() {return}
 
       // -----
@@ -463,7 +460,7 @@ class LlvmAT16 < Formula
 
       // expected-error @+1 {{redefinition of symbol named 'foo'}}
       func.func @foo() { return }
-    EOS
+    MLIR
     system bin/"mlir-opt", "--split-input-file", "--verify-diagnostics", "test.mlir"
 
     (testpath/"scanbuildtest.cpp").write <<~CPP
@@ -488,10 +485,10 @@ class LlvmAT16 < Formula
 
     # This will fail if the clang bindings cannot find `libclang`.
     with_env(PYTHONPATH: prefix/Language::Python.site_packages(python3)) do
-      system python3, "-c", <<~EOS
+      system python3, "-c", <<~PYTHON
         from clang import cindex
         cindex.Config().get_cindex_library()
-      EOS
+      PYTHON
     end
 
     # Check that lldb can use Python

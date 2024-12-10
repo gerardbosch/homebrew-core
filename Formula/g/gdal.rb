@@ -4,7 +4,7 @@ class Gdal < Formula
   url "https://github.com/OSGeo/gdal/releases/download/v3.10.0/gdal-3.10.0.tar.gz"
   sha256 "946ef444489bedbc1b04bd4c115d67ae8d3f3e4a5798d5a2f1cb2a11014105b2"
   license "MIT"
-  revision 2
+  revision 3
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -12,12 +12,12 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "944c05be746d14a20ed79722ddcc4e7e56b803caf6dd681ed726650897fd4cc8"
-    sha256 arm64_sonoma:  "3bd2572ecb5f135f64a852e0bb0dfedd4cc17097b040c2560891e305bbb10cde"
-    sha256 arm64_ventura: "7ee6ba66453c5214af0d607bb24bdc0bbdeb5b0ac8b666c705e004c9f2631453"
-    sha256 sonoma:        "959462e34095ea712e25d6f90a33fa21d9ece3055399b0d279e71411bb13048a"
-    sha256 ventura:       "7f80ba754c299ea99fcccc250d8bf71377de8e3b1b108336f9495479cc1aea7c"
-    sha256 x86_64_linux:  "f79c544a3c5c92031b7a79852b9285c50eb5066015df55a0432ee7b938d8ab7e"
+    sha256 arm64_sequoia: "668339891975c9f9949bbd00818306faee5901295ad99a67e56a9bf1b157be17"
+    sha256 arm64_sonoma:  "d4e876f79f2659577c7ca909e4840cfd0cf124e96731e03611bd61c3f43143a9"
+    sha256 arm64_ventura: "dcbb1c9fc0e4a812974f816342fb44a410b378f30b868bd085a537b80c49f150"
+    sha256 sonoma:        "061582a8bed0368643f2861fa0dbabe85853aa86428f9ea233ba98684143ba41"
+    sha256 ventura:       "d9234301535788a84da751c1df78193a787b4009eee8dd69d0a43aa9cd578ec7"
+    sha256 x86_64_linux:  "1aadce9769e43726fe2daefe6edff5f6a2d4e289b457448b152ff281119abdf5"
   end
 
   head do
@@ -63,7 +63,7 @@ class Gdal < Formula
   depends_on "pcre2"
   depends_on "poppler"
   depends_on "proj"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
   depends_on "qhull"
   depends_on "sqlite"
   depends_on "unixodbc"
@@ -88,7 +88,7 @@ class Gdal < Formula
   conflicts_with "cpl", because: "both install cpl_error.h"
 
   def python3
-    "python3.12"
+    "python3.13"
   end
 
   def install

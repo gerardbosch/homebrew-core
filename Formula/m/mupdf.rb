@@ -1,8 +1,8 @@
 class Mupdf < Formula
   desc "Lightweight PDF and XPS viewer"
   homepage "https://mupdf.com/"
-  url "https://mupdf.com/downloads/archive/mupdf-1.24.11-source.tar.gz"
-  sha256 "191227b96775f6705ef7d9551187511932b519273b34535a331491cf7d98163f"
+  url "https://mupdf.com/downloads/archive/mupdf-1.25.1-source.tar.gz"
+  sha256 "81aa1361252418cc45347b4ac075532096957a7ab772e20e046f3bb418d7263c"
   license "AGPL-3.0-or-later"
   head "https://git.ghostscript.com/mupdf.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Mupdf < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "3a12333dd42195995d538adb5f94df31a41a32392d863015954073dbaa83f0bd"
-    sha256 cellar: :any,                 arm64_sonoma:  "2f556710eeb0e784bbf1d1005facbcaaa80f19d667a15ca1b5ade33e65e7baa2"
-    sha256 cellar: :any,                 arm64_ventura: "45c6ff5e1826f7771c3f1417b132db2f3c8495ed3eeea5fb71c8ac7f3b9574af"
-    sha256 cellar: :any,                 sonoma:        "3ac4618c68d32ec8df6ca2ca3f72bc389fa45dd4d2c302f07014a78550e22d56"
-    sha256 cellar: :any,                 ventura:       "d469e0af3bdd1ee33bcb67928e0157197339130a627c36a5b1fb62830cb197bd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3c6d85446737b14407b9d230f9f66f94ba6c35ae2044b2dfde7c6adac74eab35"
+    sha256 cellar: :any,                 arm64_sequoia: "a88ff7ab0a66f9bd54f03edf3aaada9f26c5cfae519fc2da9550eda200ddc22a"
+    sha256 cellar: :any,                 arm64_sonoma:  "9e73f439f142783d3a6249a0e79d8a3cef80041a00eb15b250d0e62f55910579"
+    sha256 cellar: :any,                 arm64_ventura: "3d57318cc85f134566e391dd051b911e8443535c1de45c7dc9bd1ac894f33ed7"
+    sha256 cellar: :any,                 sonoma:        "05bad54ff02702296895384d7053dcfbfe90241a3acf2390244b3df5e3b6a208"
+    sha256 cellar: :any,                 ventura:       "5853d74cf7de5187ef9c8aea7864017f58b36f1dee2f91ed57cde25862449521"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "68433f4bc63feaa99c7e8ba6299598aef3cc8aedeeead225d449d6855afe91c2"
   end
 
   depends_on "llvm" => :build
