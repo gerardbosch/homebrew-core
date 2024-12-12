@@ -560,6 +560,7 @@ cortex
 cosign
 cotila
 cotp
+coturn
 couchbase-shell
 couchdb
 countdown
@@ -1196,6 +1197,7 @@ gource
 govc
 govulncheck
 gowsdl
+gpa
 gpac
 gperftools
 gpg-tui
@@ -1214,6 +1216,7 @@ grails
 grap
 graph-tool
 graphicsmagick
+graphql-inspector
 graphqurl
 graphqxl
 graphviz
@@ -1846,12 +1849,14 @@ lz4
 lzip
 macchina
 mackup
+macmon
 mactop
 mafft
 mage
 magic-wormhole
 magic-wormhole.rs
 magic_enum
+mago
 mailcatcher
 mailpit
 mailsy
@@ -2419,6 +2424,7 @@ proto
 protobuf
 protoc-gen-go
 protoc-gen-go-grpc
+protoc-gen-grpc-java
 protoc-gen-grpc-web
 protolint
 prowler
@@ -2557,6 +2563,7 @@ remind
 renovate
 repo
 reposurgeon
+repren
 reproc
 restic
 restview
@@ -2945,6 +2952,7 @@ telnetd
 template-glib
 temporal
 tendermint
+tenere
 tengo
 tenv
 tere
@@ -3092,6 +3100,7 @@ urdfdom
 urdfdom_headers
 uriparser
 urlscan
+urlwatch
 usb.ids
 usbredir
 usbutils
@@ -3131,6 +3140,7 @@ verapdf
 vercel-cli
 verilator
 verovio
+versitygw
 vet
 vexctl
 vfox
