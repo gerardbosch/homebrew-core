@@ -3,18 +3,18 @@ class Safety < Formula
 
   desc "Checks Python dependencies for known vulnerabilities and suggests remediations"
   homepage "https://safetycli.com/product/safety-cli"
-  url "https://files.pythonhosted.org/packages/bf/f6/0569f2928e03b7058c95f4ae05d3098c9c0ba0d42de2adfe91fd6de25c2e/safety-3.2.11.tar.gz"
-  sha256 "70a3b7cc75ba41907bf1705bcbbeab232688657c21088e108712ecb601fe0f20"
+  url "https://files.pythonhosted.org/packages/3a/78/1a3ccb6e48b30892ae5781e8239a6d446a755ef2956c7b14595f18fb4083/safety-3.2.14.tar.gz"
+  sha256 "7a45d88b1903c5b7c370eaeb6ca131a52f147e0b8a0b302265f82824ef92adc7"
   license "MIT"
   head "https://github.com/pyupio/safety.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "05bce5e7d178b074e3d1358b98450ea886cd462829cebb08a97931fa03b15836"
-    sha256 cellar: :any,                 arm64_sonoma:  "eeae21e7fb7b6a1c90b47bf67664ca734f5b60c9b057f8965f0ba227c9f72ae7"
-    sha256 cellar: :any,                 arm64_ventura: "5c9e24a9bb2832d6f4d0c69b247e50ad4b0d7d9e2b6ce33f6a15e2f901867660"
-    sha256 cellar: :any,                 sonoma:        "40cfa117866379f45b25f03db5d722e895cf9eb231bde956f5929512278e59cf"
-    sha256 cellar: :any,                 ventura:       "cd856083121ea9639821b67cbb3524dc15cca0b5806160dbf9404d6063fb7201"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7cfc47f4d98c6337eaedd631f730139531f021d05b0592bb0d9bcf2baf60b27f"
+    sha256 cellar: :any,                 arm64_sequoia: "f658b3bb7170363219328ea832775d62f8643f868279888e2796bd801ed6efad"
+    sha256 cellar: :any,                 arm64_sonoma:  "ea2ef4253f9d243feba283ae4931b80e64e5dd356f3b441d3f4d52ab6effa30b"
+    sha256 cellar: :any,                 arm64_ventura: "65f843dd0cf214c4fec4dbc909c829df5968cba031e56d0b7fe360beb508252f"
+    sha256 cellar: :any,                 sonoma:        "80575130a7a1b1cf0e7a4a6b040e0c071c72933bed74681883688783c94ca358"
+    sha256 cellar: :any,                 ventura:       "5ba1dc40c8751bebc691edcb4c752667be7f9b9452a71afc6110f3294676bdab"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "856accd90c9ef6bd9cf55e4ab43d96018a587abe8106ffae16a3e45063f370e4"
   end
 
   depends_on "rust" => :build
@@ -28,8 +28,8 @@ class Safety < Formula
   end
 
   resource "authlib" do
-    url "https://files.pythonhosted.org/packages/f3/75/47dbab150ef6f9298e227a40c93c7fed5f3ffb67c9fb62cd49f66285e46e/authlib-1.3.2.tar.gz"
-    sha256 "4b16130117f9eb82aa6eec97f6dd4673c3f960ac0283ccdae2897ee4bc030ba2"
+    url "https://files.pythonhosted.org/packages/33/7d/67f064784776afc59d6deda9f4b8e117843d7cda8ddf34bbdbbae39641ca/authlib-1.4.0.tar.gz"
+    sha256 "1c1e6608b5ed3624aeeee136ca7f8c120d6f51f731aa152b153d54741840e1f2"
   end
 
   resource "charset-normalizer" do
@@ -48,8 +48,8 @@ class Safety < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/d5/71/bb1326535231229dd69a9dd2e338f6f54b2d57bd88fc4a52285c0ab8a5f6/filelock-3.12.4.tar.gz"
-    sha256 "2e6f249f1f3654291606e046b09f1fd5eac39b360664c27f5aad072012f8bcbd"
+    url "https://files.pythonhosted.org/packages/9d/db/3ef5bb276dae18d6ec2124224403d1d67bccdbefc17af4cc8f553e341ab1/filelock-3.16.1.tar.gz"
+    sha256 "c249fbfcd5db47e5e2d6d62198e565475ee65e4831e2561c8e313fa7eb961435"
   end
 
   resource "idna" do
@@ -73,8 +73,8 @@ class Safety < Formula
   end
 
   resource "marshmallow" do
-    url "https://files.pythonhosted.org/packages/6d/30/14d8609f65c8aeddddd3181c06d2c9582da6278f063b27c910bbf9903441/marshmallow-3.23.1.tar.gz"
-    sha256 "3a8dfda6edd8dcdbf216c0ede1d1e78d230a6dc9c5a088f58c4083b974a0d468"
+    url "https://files.pythonhosted.org/packages/ac/0f/33b98679f185f5ce58620595b32d4cf8e2fa5fb56d41eb463826558265c6/marshmallow-3.23.2.tar.gz"
+    sha256 "c448ac6455ca4d794773f00bae22c2f351d62d739929f761dce5eacb5c468d7f"
   end
 
   resource "mdurl" do
@@ -88,8 +88,8 @@ class Safety < Formula
   end
 
   resource "psutil" do
-    url "https://files.pythonhosted.org/packages/18/c7/8c6872f7372eb6a6b2e4708b88419fb46b857f7a2e1892966b851cc79fc9/psutil-6.0.0.tar.gz"
-    sha256 "8faae4f310b6d969fa26ca0545338b21f73c6b15db7c4a8d934a5482faa818f2"
+    url "https://files.pythonhosted.org/packages/1f/5a/07871137bb752428aa4b659f910b399ba6f291156bdea939be3e96cae7cb/psutil-6.1.1.tar.gz"
+    sha256 "cf8496728c18f2d0b45198f06895be52f36611711746b7f30c464b422b50e2f5"
   end
 
   resource "pydantic" do
@@ -123,13 +123,13 @@ class Safety < Formula
   end
 
   resource "safety-schemas" do
-    url "https://files.pythonhosted.org/packages/07/48/89f164c0fcb41d8cb4a67580461f94d6e3cb0fff7b198fb0c3bbb7bdfd4a/safety_schemas-0.0.9.tar.gz"
-    sha256 "23044f88aa21213980b00e6002cf56229e1efc2b6cbdde3e90fc781ca6bbc217"
+    url "https://files.pythonhosted.org/packages/ee/b5/736f73c3acb96b93f64006fa3fa6c78d99a7abba6aad46acc3f0b2438b2d/safety_schemas-0.0.10.tar.gz"
+    sha256 "5ec83bb19e17003748d2a4b11e43e1f2b4471c9434329e9a0d80d1069966b96c"
   end
 
   resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/e2/73/c1ccf3e057ef6331cc6861412905dc218203bde46dfe8262c1631aa7fb11/setuptools-75.4.0.tar.gz"
-    sha256 "1dc484f5cf56fd3fe7216d7b8df820802e7246cfb534a1db2aa64f14fcb9cdcb"
+    url "https://files.pythonhosted.org/packages/43/54/292f26c208734e9a7f067aea4a7e282c080750c4546559b58e2e45413ca0/setuptools-75.6.0.tar.gz"
+    sha256 "8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"
   end
 
   resource "shellingham" do
@@ -138,8 +138,8 @@ class Safety < Formula
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/e7/87/9eb07fdfa14e22ec7658b5b1147836d22df3848a22c85a4e18ed272303a5/typer-0.13.0.tar.gz"
-    sha256 "f1c7198347939361eec90139ffa0fd8b3df3a2259d5852a0f7400e476d95985c"
+    url "https://files.pythonhosted.org/packages/cb/ce/dca7b219718afd37a0068f4f2530a727c2b74a8b6e8e0c0080a4c0de4fcd/typer-0.15.1.tar.gz"
+    sha256 "a0588c0a7fa68a1978a069818657778f86abe6ff5ea6abf472f940a08bfe4f0a"
   end
 
   resource "typing-extensions" do
