@@ -2,8 +2,8 @@ class Rdkit < Formula
   desc "Open-source chemoinformatics library"
   homepage "https://rdkit.org/"
   # NOTE: Make sure to update RPATHs if any "@rpath-referenced libraries" show up in `brew linkage`
-  url "https://github.com/rdkit/rdkit/archive/refs/tags/Release_2024_09_3.tar.gz"
-  sha256 "5d6a44be526e26ae80bb225df4bb0344e52c502b7f874ee824cfb2dc01adafeb"
+  url "https://github.com/rdkit/rdkit/archive/refs/tags/Release_2024_09_4.tar.gz"
+  sha256 "a5e8da75aae7e88f3a50d8577f9027c971187492a93a15085f797fe6fef74ad2"
   license "BSD-3-Clause"
   head "https://github.com/rdkit/rdkit.git", branch: "master"
 
@@ -16,12 +16,12 @@ class Rdkit < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "52a4d79c9315ec509a1dbec63fae486ea48188391aa5d9a812ae7fd36fa150a3"
-    sha256 cellar: :any,                 arm64_sonoma:  "0b54fdc727ac5b3f4892800d341b9369bc1338ac4f4b9bf09470d28272352d84"
-    sha256 cellar: :any,                 arm64_ventura: "63634d297838599302e43004d0e88dc67274082f541e9756bacd90f8e2208217"
-    sha256 cellar: :any,                 sonoma:        "135df26be344166eba20b7ee7d079d4955f706e20a6c13d282b25f0018f258d9"
-    sha256 cellar: :any,                 ventura:       "5eac7f29cf97970dfd1978d178c94fd45dde13c340940aa8deae96ad8d0dee4e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "337f59cb9dda669d8182404209e8da28874cab2593a09b23961bb4b269c5346e"
+    sha256 cellar: :any,                 arm64_sequoia: "c8f48f4b31a3376c13d8739b9dd52e5954d4b8a8bad18b5ea0783a8ef1d3587e"
+    sha256 cellar: :any,                 arm64_sonoma:  "8164206a12dbef541b5642f2427dd91be62c931dec2987740bde9516abdef16f"
+    sha256 cellar: :any,                 arm64_ventura: "7983d7fde5a0428f59ab746589067c12e58a22c11cdcc8f984905443b1a802bf"
+    sha256 cellar: :any,                 sonoma:        "fae97a066928949c14794288f909ac1469dac9d89c128a48130ad1ddf27fa342"
+    sha256 cellar: :any,                 ventura:       "41f1289dcc6d89321afcc273fd7d78a28ac23e84614c5059d9de1f93d63a8535"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "19a5b8696d46459c9955b2014f41b82b30bf86240512d945324b8f5caab00869"
   end
 
   depends_on "catch2" => :build
@@ -39,10 +39,10 @@ class Rdkit < Formula
   depends_on "maeparser"
   depends_on "numpy"
   depends_on "py3cairo"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
 
   def python3
-    "python3.12"
+    "python3.13"
   end
 
   def postgresqls

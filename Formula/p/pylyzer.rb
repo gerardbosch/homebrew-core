@@ -1,17 +1,17 @@
 class Pylyzer < Formula
   desc "Fast static code analyzer & language server for Python"
   homepage "https://github.com/mtshiba/pylyzer"
-  url "https://github.com/mtshiba/pylyzer/archive/refs/tags/v0.0.73.tar.gz"
-  sha256 "d232131d2db2d9d7be538773c80b0d4f267f125e4d7b190888448b1bdfdf88b5"
+  url "https://github.com/mtshiba/pylyzer/archive/refs/tags/v0.0.75.tar.gz"
+  sha256 "fbf4fed387cbc37f0fda57960fe120c718f35a4616a725a26c754dcb45a57a0f"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "eea5c5be1187843096a914e6495e18dacab2222a1fafc83437db60abce5635b3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b7bda770a6a6f7449ddfffa4895de1ee6fdc2d692e4539323826e943344e250d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "2f300a42a6baf17bcf8872242dd9ef6b92d742598e52bcb6622aef19bf1cdd58"
-    sha256 cellar: :any_skip_relocation, sonoma:        "cd862c5b24ee86d903cb55bed9aedecff19175e7e6160866ee299e32489ce0fe"
-    sha256 cellar: :any_skip_relocation, ventura:       "a5895cf9e2f4a2be389b6ba822d6755c987f1a73e41b4c345f3aef9e2dd44ea2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c2dd3374d05f19a5959b3773659107c641d36298f65183cad390e29b95272657"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d7044cab9a95e8712f2aaf1a16557a3c556b7256aaf0cfed60397f64e93dd7a3"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5dec6d7b437c29ef4aeb4848a3fce921de82f8abf04b0960e42a1600082902dc"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "9014cd3816cd0480b42353f2a0bd3d3c5a561c5d2688605dd299b52718586fde"
+    sha256 cellar: :any_skip_relocation, sonoma:        "40a4319621f2a5913adb9d4ea9e3435bf1fd8df8f4ebdc29d7adfbb29df441bd"
+    sha256 cellar: :any_skip_relocation, ventura:       "5e53288ef49bc0dee205fb80f93f0c66fa66ba6e6ef6b5fda6bc02ead74313d5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f283b924ee9dc2c8c0ccde5affa65973a34c505b508401a4b8d98929a2496fd3"
   end
 
   depends_on "rust" => :build

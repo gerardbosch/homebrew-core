@@ -1,18 +1,18 @@
 class ProtocGenGrpcJava < Formula
   desc "Protoc plugin for gRPC Java"
   homepage "https://grpc.io/docs/languages/java/"
-  url "https://github.com/grpc/grpc-java/archive/refs/tags/v1.68.2.tar.gz"
-  sha256 "dc1ad2272c1442075c59116ec468a7227d0612350c44401237facd35aab15732"
+  url "https://github.com/grpc/grpc-java/archive/refs/tags/v1.69.0.tar.gz"
+  sha256 "5c3178f118190d73f52460d671c7b6fc42249b7b5890d228ce422f2ca20b1a68"
   license "Apache-2.0"
   revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "f9bd029369494555fbac2e0ceb782c8e9ee8e3c60aef5d764f8e871e47e0abbc"
-    sha256 cellar: :any,                 arm64_sonoma:  "8fae0ab13517f9db6c63e3edac8d26be6283528ebe49df8623488a79b665e044"
-    sha256 cellar: :any,                 arm64_ventura: "65f3a83b4bb88f709b140af84ee91dac2935ff26a9965c2441d07fcd80db471d"
-    sha256 cellar: :any,                 sonoma:        "fe055e58371d129edd9a003955cbf2608346a2f3defbc64bfa7bf85432e9641f"
-    sha256 cellar: :any,                 ventura:       "3a1ebe5574fce77911f9b1f9a007e013bafdbb7e81be2a982a79c60002112be6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d8ced8afd60cdd73d9227cd6ad8d5bfb2eccb28cf1825f857078fe647e37df17"
+    sha256 cellar: :any,                 arm64_sequoia: "f7233bee8aa11c24b84b5b12c0d653059a2a8beb4cb09a4b4d1fbfba3fbdfb4e"
+    sha256 cellar: :any,                 arm64_sonoma:  "a5d03b39175152b3de075a3f91d30bbee7fcf75e8ab9349fd7d22bfb946702ec"
+    sha256 cellar: :any,                 arm64_ventura: "cbfbef34610db941d0acd3a43ca4e752c3f37d07e51f809c10233a3d944cd87a"
+    sha256 cellar: :any,                 sonoma:        "25ef38649ae0edd15660ceefb79d572d3a395773d2610f7aad8e6176a324de1e"
+    sha256 cellar: :any,                 ventura:       "b653b716fc88a1b77704fba7f7d125e0161c246906df07fb2e9f34b4ca766433"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f8af80522f0d63166dc2055170fb94dd98b2e67a278c541650757ccf34888fe3"
   end
 
   depends_on "openjdk@21" => :build # due to Gradle 8.5

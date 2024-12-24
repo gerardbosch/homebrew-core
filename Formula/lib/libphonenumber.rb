@@ -1,10 +1,10 @@
 class Libphonenumber < Formula
   desc "C++ Phone Number library by Google"
   homepage "https://github.com/google/libphonenumber"
-  url "https://github.com/google/libphonenumber/archive/refs/tags/v8.13.51.tar.gz"
-  sha256 "c96da523824546a91b4bd6753a54f2ab7f4979d87729407170b58066e245f5bc"
+  url "https://github.com/google/libphonenumber/archive/refs/tags/v8.13.52.tar.gz"
+  sha256 "672758f48fdffcf0be48894824c72c729c07b914a04626e24fa01945bb09ca53"
   license "Apache-2.0"
-  revision 1
+  revision 2
 
   livecheck do
     url :stable
@@ -12,12 +12,12 @@ class Libphonenumber < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "cda75fa77306270c3223a0aecde1b766b5a3c13141ada8c3a7e131f25efb7568"
-    sha256 cellar: :any,                 arm64_sonoma:  "beee36ccf90fbf9b1345b552608880e70a0c60c6e1d95e43330ee205dfef9d8f"
-    sha256 cellar: :any,                 arm64_ventura: "995c215dc79064ba72a43c7c81ed3a471de01b0a3ffe20c58ca05ff79708b2a0"
-    sha256 cellar: :any,                 sonoma:        "edb57a60b883a8f7b4f97e1d1e84ad16f94c73f64e2b087d709e20046ec5664f"
-    sha256 cellar: :any,                 ventura:       "46c31499beb238f209c27ae770f86c254ec9f67a46f51c2c8a3af322a0d8c8fe"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "acacdff6c93816907bfb03b1f7edec0b9ae7ce731ae3c26fe81a00d5f8377e9c"
+    sha256 cellar: :any,                 arm64_sequoia: "8f9d906ac50082edaa863e023e790a8059f71362068b6b87083c2749e709020e"
+    sha256 cellar: :any,                 arm64_sonoma:  "834dc66ce128813dede8c7b73844965ca90485697d0728c24cfc09e4baef8c35"
+    sha256 cellar: :any,                 arm64_ventura: "47d6b974debd630cc154af7c2598191fd853434c0ef11fdfc82862c6e860d9aa"
+    sha256 cellar: :any,                 sonoma:        "c8b4b905e7eb1ee7235f313bf0f32cd9186c747079a371db125021d79afc0296"
+    sha256 cellar: :any,                 ventura:       "32c5e5649cf10423c78309e38ce8250d6747ff7d1fb558d67fb20d338b2301c6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0d89328a35661597724a9689bb982611d34da7779754e320e1ef05ea4f1a988e"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -69,8 +69,8 @@ class Libphonenumber < Formula
       target_link_libraries(test libphonenumber::phonenumber-shared)
     CMAKE
 
-    system "cmake", ".", *std_cmake_args
-    system "cmake", "--build", "."
-    system "./test"
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "cmake", "--build", "build"
+    system "./build/test"
   end
 end

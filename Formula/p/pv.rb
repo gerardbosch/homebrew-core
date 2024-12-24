@@ -1,8 +1,8 @@
 class Pv < Formula
   desc "Monitor data's progress through a pipe"
   homepage "https://www.ivarch.com/programs/pv.shtml"
-  url "https://www.ivarch.com/programs/sources/pv-1.9.15.tar.gz"
-  sha256 "e2b17564ab9eba1ec2caae285960cbf363b4401dffda191a60a0befe68e17dac"
+  url "https://www.ivarch.com/programs/sources/pv-1.9.25.tar.gz"
+  sha256 "162495aabb1cb842186cb224995e3d5f60a9f527a49ccbd8212383cc72b7c36c"
   license "Artistic-2.0"
 
   livecheck do
@@ -11,19 +11,26 @@ class Pv < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7b399be5422bcd9841f428a2cdf20978cbe106f894df8aad117db0522546ffc2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c993bbef82690b6f4e773421ed6a63dbd069b1da408b0be444839e3048217384"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f558107fcfd4617aecd28b65b6fb8bd11b2cd84eb10e18ac87eb441f0b0147d9"
-    sha256 cellar: :any_skip_relocation, sonoma:        "51198750d333a2fae32d0cba5a0a5a2c8d16b1c777381c9d7554deff74adc3a4"
-    sha256 cellar: :any_skip_relocation, ventura:       "3d34a1ac295d5a2d8bf661e71cda8128992535f9d11afddb6888d0b810ace337"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ca5db0944e81a9008d9a49413c1b48fe38354d3b1be71d7a9d3e409fa831859b"
+    rebuild 1
+    sha256 arm64_sequoia: "e0da19b94f65cb3443073d84dc56636fc17122537f222cc74eb8526872036685"
+    sha256 arm64_sonoma:  "5cb01ad3f5394b602152c5a8501e778dc72005e9fe0aacfeb7924a5309c702cc"
+    sha256 arm64_ventura: "c57e295e51a38b43d01acdb12b546551b2a7dc2234fa51e3452ea0a8df48a910"
+    sha256 sonoma:        "e336a400640f881823b2aeb1cddadcd5cdadcee1d70d95d140c628b49cfde3cf"
+    sha256 ventura:       "9495bf894c4d9265c399544d8e7c8a84fbd1d570fd06193b8e969c3036d6706b"
+    sha256 x86_64_linux:  "9df26dd6d6cbc6753eb33552a2bc28bd6587aa2875bf3edacd1c279fe824cfbc"
+  end
+
+  uses_from_macos "ncurses"
+
+  on_macos do
+    depends_on "gettext"
   end
 
   def install
     # Fix compile with newer Clang
     ENV.append_to_cflags "-Wno-implicit-function-declaration" if DevelopmentTools.clang_build_version >= 1403
 
-    system "./configure", "--prefix=#{prefix}", "--mandir=#{man}", "--disable-nls"
+    system "./configure", "--mandir=#{man}", *std_configure_args
     system "make", "install"
   end
 
