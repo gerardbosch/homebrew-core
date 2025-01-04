@@ -1,17 +1,18 @@
 class I2pd < Formula
   desc "Full-featured C++ implementation of I2P client"
   homepage "https://i2pd.website/"
-  url "https://github.com/PurpleI2P/i2pd/archive/refs/tags/2.54.0.tar.gz"
-  sha256 "5c3f703417bb5f3e5dda642d39c5d30593a5dcf69d5a5ecfe82d5e8a7d454aaf"
+  url "https://github.com/PurpleI2P/i2pd/archive/refs/tags/2.55.0.tar.gz"
+  sha256 "f5792a1c0499143c716663e90bfb105aaa7ec47d1c4550b5f90ebfc25da00c6c"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8cf3af75a10a5b7a03054b3ef0c90e3ba39337a06f8a6325f2476c1cbebdccd6"
-    sha256 cellar: :any,                 arm64_sonoma:  "52a22137f9fab8fe91a767490b672fa04e3018abdcba29b223c0c100252aaaf7"
-    sha256 cellar: :any,                 arm64_ventura: "3835e6ec875545c06531550bdc09edd6c23d5a0774550b20ae35f962b833ff6d"
-    sha256 cellar: :any,                 sonoma:        "bf628805328fe1b0683a63b1ac4139b6c333a281c113db6919a717fa8c4abe6a"
-    sha256 cellar: :any,                 ventura:       "156e5a4e93c57c42ee35a0e078a0804671631f22c736e3804cfe496380e26511"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f96bed143d8206efd421c611f31313288d0d2c916ff45174d5a569fbe88caea2"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "c49f0ffa26b0444d64c8824d2c9c3a2a1abd2a9a92cd3b3ff8efd77231d17012"
+    sha256 cellar: :any,                 arm64_sonoma:  "727a719e890ff0ae5f2df28c004e05f3e7c97fb38950316249a3fcf5b8e9a818"
+    sha256 cellar: :any,                 arm64_ventura: "7b27b8203bea735c2ecbfd24399e6623c0bda4cde36d5c52edfe8591d90fdc98"
+    sha256 cellar: :any,                 sonoma:        "d093800a9dcdf0a6ed9f7118be1706917e3a0a006ae6029c2a9715ea3cb49cc0"
+    sha256 cellar: :any,                 ventura:       "e67d1f9f5dfda2d3c9788c84f6134ca980aca1907dec76433ddef1973f20d059"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f8a7f79d76d991b3900f7812212f1e6fcec5a56893666f21f0c2329b308c9a41"
   end
 
   depends_on "boost"
@@ -67,7 +68,7 @@ class I2pd < Formula
     pidfile = testpath/"i2pd.pid"
     system bin/"i2pd", "--datadir=#{testpath}", "--pidfile=#{pidfile}", "--daemon"
     sleep 5
-    assert_predicate testpath/"router.keys", :exist?, "Failed to start i2pd"
+    assert_path_exists testpath/"router.keys", "Failed to start i2pd"
     pid = pidfile.read.chomp.to_i
     Process.kill "TERM", pid
   end

@@ -3,12 +3,13 @@ class LanggraphCli < Formula
 
   desc "Command-line interface for deploying apps to the LangGraph platform"
   homepage "https://www.github.com/langchain-ai/langgraph"
-  url "https://files.pythonhosted.org/packages/aa/96/68d5e157e8b313bb76c504dd3288ab020942f9ef4353017f25adb4570ee7/langgraph_cli-0.1.61.tar.gz"
-  sha256 "373bba9c297408afb84ffb19df868b49c23390195bb0029cb6f8945f8a202eca"
+  url "https://files.pythonhosted.org/packages/02/7a/e94147315dd73626b3d0587849e6f5c389dd7ca24616c2e610d3a0afee1a/langgraph_cli-0.1.65.tar.gz"
+  sha256 "16e8fbd432f9d173495a9f1221b8e50db278f34df3d98b14de3cb9d5db9f92ef"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "a629faa85d689a9b8bb58108c4e8e1a7d2b4855bb51d9f105378a67259680065"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, all: "82ad910c6e05f3de0dc08aef3785813ebd6ee6c97ca03f7dd2667b823507847e"
   end
 
   depends_on "python@3.13"
@@ -20,6 +21,8 @@ class LanggraphCli < Formula
 
   def install
     virtualenv_install_with_resources
+
+    generate_completions_from_executable(bin/"langgraph", shells: [:fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

@@ -5,6 +5,7 @@ abseil
 abyss
 ack
 acl2
+acronym
 act
 action-validator
 actionlint
@@ -87,6 +88,7 @@ apptainer
 appwrite
 apr
 apt
+aptly
 aravis
 arcade-learning-environment
 archi-steam-farm
@@ -133,6 +135,7 @@ asymptote
 asyncapi
 asyncplusplus
 at-spi2-core
+atac
 atf
 atlantis
 atlas
@@ -144,6 +147,7 @@ auditbeat
 auditwheel
 austin
 autobrr
+autoconf-archive
 autodiff
 automake
 autopep8
@@ -184,6 +188,7 @@ awslogs
 axel
 azcopy
 azure-core-cpp
+azurehound
 b2-tools
 babel
 babl
@@ -237,6 +242,7 @@ beautysh
 bed
 bee
 bench
+bender
 benthos
 berglas
 bettercap
@@ -296,6 +302,7 @@ brook
 broot
 brotli
 brpc
+bruno-cli
 btrfs-progs
 bubblewrap
 buf
@@ -317,6 +324,7 @@ bwidget
 byacc
 byobu
 byteman
+bzip3
 bzt
 c-ares
 c-blosc
@@ -356,15 +364,20 @@ cargo-chef
 cargo-crev
 cargo-deny
 cargo-depgraph
+cargo-dist
+cargo-flamegraph
 cargo-generate
 cargo-instruments
 cargo-llvm-cov
 cargo-llvm-lines
 cargo-make
+cargo-msrv
 cargo-nextest
 cargo-outdated
+cargo-public-api
 cargo-release
 cargo-run-bin
+cargo-shuttle
 cargo-udeps
 cargo-watch
 cargo-zigbuild
@@ -523,6 +536,7 @@ codec2
 codelimit
 coder
 codespell
+codevis
 cog
 coin3d
 coinutils
@@ -532,6 +546,7 @@ commandbox
 commitizen
 commitlint
 composer
+comtrya
 conan
 conan@1
 concurrencykit
@@ -560,6 +575,7 @@ cortex
 cosign
 cotila
 cotp
+coturn
 couchbase-shell
 couchdb
 countdown
@@ -582,7 +598,9 @@ cpufetch
 cpuid
 cql-proxy
 crabz
+cracklib
 crane
+crates-tui
 cri-tools
 crispy-doom
 croaring
@@ -654,6 +672,7 @@ ddrescue
 deadfinder
 deark
 debianutils
+decasify
 define
 dehydrated
 delve
@@ -685,6 +704,7 @@ di
 dialog
 diamond
 dicebear
+diceware
 dict
 diesel
 diffoci
@@ -696,6 +716,7 @@ dillo
 directx-headers
 direnv
 direvent
+diskus
 dislocker
 displayplacer
 dissent
@@ -762,6 +783,7 @@ drogon
 drone-cli
 dropbear
 druid
+dry
 dscanner
 dsda-doom
 dsq
@@ -837,6 +859,7 @@ embree
 emqx
 emscripten
 enchant
+energy
 enet
 enpass-cli
 ensmallen
@@ -851,6 +874,7 @@ epic5
 epoll-shim
 epr
 eprover
+epubcheck
 eralchemy
 erdtree
 erg
@@ -1028,6 +1052,7 @@ fx
 fzf
 fzf-make
 g-ls
+g2o
 gabo
 gallery-dl
 gammaray
@@ -1065,6 +1090,7 @@ gexiv2
 gf
 gfold
 ggshield
+gh-ost
 ghcup
 ghex
 ghorg
@@ -1089,6 +1115,7 @@ git-delta
 git-extras
 git-filter-repo
 git-grab
+git-ignore
 git-interactive-rebase-tool
 git-lfs
 git-machete
@@ -1118,6 +1145,7 @@ gjs
 glances
 glassfish
 glasskube
+glaze
 gleam
 glfw
 glib-networking
@@ -1136,6 +1164,7 @@ gnmic
 gnome-autoar
 gnu-apl
 gnu-getopt
+gnu-typist
 gnu-units
 gnumeric
 gnunet
@@ -1145,6 +1174,7 @@ gnupg@2.2
 gnuplot
 gnutls
 go
+go-blueprint
 go-camo
 go-critic
 go-feature-flag-relay-proxy
@@ -1174,6 +1204,7 @@ googletest
 goose
 gopass
 gopass-jsonapi
+gopeed
 gopls
 goplus
 gor
@@ -1196,6 +1227,7 @@ gource
 govc
 govulncheck
 gowsdl
+gpa
 gpac
 gperftools
 gpg-tui
@@ -1214,6 +1246,7 @@ grails
 grap
 graph-tool
 graphicsmagick
+graphql-inspector
 graphqurl
 graphqxl
 graphviz
@@ -1233,6 +1266,7 @@ groovysdk
 grpc
 grpc-swift
 grype
+gsan
 gsettings-desktop-schemas
 gsl
 gsmartcontrol
@@ -1263,10 +1297,12 @@ hackrf
 hadoop
 halide
 halp
+hamlib
 hapi-fhir-cli
 haproxy
 haproxy@2.8
 harfbuzz
+harper
 haskell-language-server
 haskell-stack
 hasura-cli
@@ -1293,6 +1329,7 @@ hermit
 hexo
 hexyl
 hfstospell
+hgrep
 hickory-dns
 hidapi
 highlight
@@ -1322,6 +1359,7 @@ httpyac
 hubble
 huggingface-cli
 hugo
+humanlog
 hut
 hwatch
 hwloc
@@ -1410,6 +1448,7 @@ jaq
 jasper
 jbang
 jbig2dec
+jbig2enc
 jc
 jd
 jdnssec-tools
@@ -1417,6 +1456,7 @@ jena
 jenkins
 jenkins-job-builder
 jenkins-lts
+jerryscript
 jet
 jetty
 jetty-runner
@@ -1424,6 +1464,7 @@ jfrog-cli
 jhipster
 jikken
 jimtcl
+jing-trang
 jj
 jlog
 jmeter
@@ -1462,6 +1503,7 @@ juju
 julia
 jupyterlab
 just
+jwt-cli
 jxl-oxide
 jython
 k2tf
@@ -1508,6 +1550,7 @@ knot
 knot-resolver
 ko
 kompose
+kool
 kops
 kor
 kotlin
@@ -1548,6 +1591,7 @@ kubeseal
 kubeshark
 kubespy
 kubetail
+kubetrim
 kubevela
 kubevious
 kubevpn
@@ -1565,8 +1609,10 @@ lacework-cli
 lando-cli
 langgraph-cli
 languagetool
+languagetool-rust
 lanraragi
 lastpass-cli
+lastz
 laszip
 latex2html
 latexdiff
@@ -1576,6 +1622,7 @@ latino
 lazydocker
 lbdb
 lc0
+lcm
 lcov
 ld-find-code-refs
 ldc
@@ -1585,7 +1632,9 @@ leaf-proxy
 leakcanary-shark
 lean-cli
 leapp-cli
+leetcode-cli
 leetup
+legba
 legitify
 lego
 leiningen
@@ -1630,6 +1679,7 @@ libdpp
 libdrm
 libedit
 libepoxy
+libesedb
 libetonyek
 libewf
 libfabric
@@ -1657,6 +1707,8 @@ libhandy
 libheif
 libhubbub
 libical
+libice
+libiconv
 libidn2
 libimagequant
 libimobiledevice-glue
@@ -1677,6 +1729,7 @@ libmapper
 libmatio
 libmaxminddb
 libmicrohttpd
+libmikmod
 libmobi
 libmodbus
 libmonome
@@ -1694,6 +1747,7 @@ libopenmpt
 liboqs
 liborigin
 libosinfo
+libp11
 libpanel
 libpano
 libpcap
@@ -1725,6 +1779,7 @@ libsecret
 libserialport
 libshumate
 libslirp
+libsm
 libsndfile
 libsolv
 libsoundio
@@ -1760,15 +1815,21 @@ libvatek
 libvirt
 libvirt-python
 libvisio
+libvncserver
 libwbxml
 libwpe
 libx11
+libxau
 libxaw3d
+libxc
+libxcrypt
 libxcursor
+libxcvt
 libxdmcp
 libxext
 libxi
 libxkbfile
+libxls
 libxlsxwriter
 libxml++@4
 libxml2
@@ -1776,9 +1837,13 @@ libxmlb
 libxmlsec1
 libxmu
 libxo
+libxrender
+libxshmfence
 libxslt
 libxt
+libxv
 libxvmc
+libxxf86vm
 libzim
 libzzip
 license-eye
@@ -1789,6 +1854,7 @@ lighthouse
 lightning
 lighttpd
 lima
+limbo
 link-grammar
 linkerd
 links
@@ -1820,6 +1886,7 @@ log4cxx
 logdy
 logrotate
 logstash
+lol-html
 lout
 lsd
 lsix
@@ -1846,12 +1913,14 @@ lz4
 lzip
 macchina
 mackup
+macmon
 mactop
 mafft
 mage
 magic-wormhole
 magic-wormhole.rs
 magic_enum
+mago
 mailcatcher
 mailpit
 mailsy
@@ -1897,9 +1966,11 @@ mcap
 mcfly
 md4c
 mdbook
+mdbtools
 mdcat
 mdless
 mdsh
+mdz
 mdzk
 mediaconch
 mediamtx
@@ -1923,6 +1994,7 @@ metals
 metricbeat
 mfem
 mgba
+mgis
 micro
 micromamba
 micronaut
@@ -1931,6 +2003,7 @@ micropython
 microsocks
 mighttpd2
 mihomo
+mikmod
 mill
 miller
 millet
@@ -1960,8 +2033,10 @@ mkvtoolnix
 mlkit
 mlpack
 mlt
+mlton
 mlx
 mmark
+mmdbctl
 mmseqs2
 mmv
 mockery
@@ -2015,6 +2090,7 @@ mujs
 multi-git-status
 multitail
 muon
+muparser
 murex
 musikcube
 mutt
@@ -2053,6 +2129,7 @@ neatvi
 nebula
 needle
 neo4j
+neocmakelsp
 neomutt
 neon
 neonctl
@@ -2067,6 +2144,7 @@ netaddr
 nethogs
 netlify-cli
 nettle
+neverest
 newman
 newrelic-cli
 newrelic-infra-agent
@@ -2149,6 +2227,7 @@ ocrmypdf
 octave
 octomap
 octosql
+odbc2parquet
 ode
 odo-dev
 odpi
@@ -2171,6 +2250,7 @@ onedpl
 onedrive
 onion-location
 onionprobe
+onnxruntime
 ooniprobe
 opa
 opam
@@ -2195,6 +2275,7 @@ openfast
 openfga
 openfortivpn
 openfpgaloader
+openfst
 openh264
 openimageio
 openiothub-server
@@ -2230,6 +2311,7 @@ operator-sdk
 optipng
 opus
 or-tools
+oranda
 oras
 orbiton
 orbuculum
@@ -2274,8 +2356,11 @@ pango
 pangomm
 papilo
 parallel
+parallel-disk-usage
 parallel-hashmap
+parca
 pari
+parlay
 parliament
 parquet-cli
 parsedmarc
@@ -2290,6 +2375,7 @@ payara
 payload-dumper-go
 pc6001vx
 pcapplusplus
+pcaudiolib
 pciutils
 pcl
 pcre2
@@ -2304,7 +2390,9 @@ pdns
 pdnsrec
 pedump
 pegtl
+percona-toolkit
 percona-xtrabackup
+periscope
 perl
 perltidy
 peru
@@ -2315,6 +2403,7 @@ pg_partman
 pgbadger
 pgbouncer
 pgpool-ii
+pgrok
 pgroonga
 pgrouting
 pgweb
@@ -2329,13 +2418,16 @@ php@8.3
 phpmyadmin
 phpunit
 phylum-cli
+pianobar
 pianod
 picard-tools
 picotool
 pidgin
 pie
 pig
+piknik
 pillow
+pinact
 pinentry
 pinocchio
 pinot
@@ -2343,6 +2435,7 @@ pint
 pip-audit
 pip-tools
 pipdeptree
+pipelight
 pipenv
 pipet
 pipgrip
@@ -2356,6 +2449,7 @@ pkg-config-wrapper
 pkgconf
 pkl
 plantuml
+planus
 platformio
 plow
 pluto
@@ -2392,6 +2486,7 @@ postgresql@15
 postgresql@16
 postgresql@17
 postgrest
+posting
 poutine
 powerline-go
 powerman
@@ -2407,6 +2502,7 @@ primecount
 primesieve
 principalmapper
 probe-rs-tools
+procps
 procs
 proftpd
 proj
@@ -2419,6 +2515,7 @@ proto
 protobuf
 protoc-gen-go
 protoc-gen-go-grpc
+protoc-gen-grpc-java
 protoc-gen-grpc-web
 protolint
 prowler
@@ -2429,6 +2526,7 @@ prqlc
 prr
 prs
 psalm
+pscale
 pspg
 psutils
 psysh
@@ -2481,6 +2579,7 @@ python-yq
 pythran
 pyupgrade
 qbe
+qbec
 qbittorrent-cli
 qbs
 qca
@@ -2525,6 +2624,7 @@ ranger
 rapidfuzz-cpp
 ratchet
 ratfor
+ratify
 rattler-build
 rav1e
 raven
@@ -2555,13 +2655,17 @@ release-it
 remarshal
 remind
 renovate
+replxx
 repo
+repomix
 reposurgeon
+repren
 reproc
 restic
 restview
 resvg
 retire
+reveal-md
 revive
 rex
 rgbds
@@ -2570,6 +2674,7 @@ rhit
 riemann
 riemann-client
 rio
+rip2
 ripsecrets
 risor
 river
@@ -2613,6 +2718,7 @@ ruff
 ruff-lsp
 rune
 runit
+runitor
 rure
 rush
 rush-parallel
@@ -2677,6 +2783,7 @@ scummvm-tools
 scw
 sdb
 sdl2
+sdl2_image
 seal
 seam
 seaweedfs
@@ -2686,12 +2793,15 @@ securefs
 selene
 selenium-server
 semgrep
+sendme
 sentencepiece
+sentry-cli
 seqkit
 sequin
 sequoia-sq
 ser2net
 serialosc
+serie
 serpl
 serverless
 service-weaver
@@ -2713,6 +2823,7 @@ shellharden
 shellz
 sherlock
 shfmt
+showcert
 showkey
 shtools
 shub
@@ -2755,6 +2866,7 @@ slides
 slirp4netns
 sloc
 slsa-verifier
+slumber
 slurm
 smake
 smartdns
@@ -2832,6 +2944,7 @@ src
 srgn
 srt
 srtp
+sse2neon
 ssh-audit
 sshs
 ssldump
@@ -2842,6 +2955,8 @@ stackql
 stanc3
 stanford-corenlp
 star
+starlark-rust
+static-web-server
 staticcheck
 statix
 stdman
@@ -2879,6 +2994,7 @@ suite-sparse
 sundials
 superfile
 superlu
+surfer
 suricata
 svgbob
 svgo
@@ -2889,6 +3005,8 @@ svtplay-dl
 swagger-codegen
 swagger-codegen@2
 swagger2markup-cli
+swc
+swctl
 swi-prolog
 swift-protobuf
 swift-sh
@@ -2898,6 +3016,7 @@ swig
 swtpm
 syft
 symengine
+synchrony
 syncthing
 sysaidmin
 sysdig
@@ -2907,12 +3026,15 @@ sysstat
 systemc
 systemd
 t-completion
+ta-lib
+tabiew
 tailscale
 tailspin
 tailwindcss
 tailwindcss-language-server
 talhelper
 talisman
+talosctl
 tanka
 taplo
 tarantool
@@ -2925,6 +3047,7 @@ tbls
 tbox
 tccutil
 tcl-tk
+tcl-tk@8
 tcpdump
 tcpreplay
 tcsh
@@ -2945,6 +3068,7 @@ telnetd
 template-glib
 temporal
 tendermint
+tenere
 tengo
 tenv
 tere
@@ -2983,6 +3107,7 @@ tfsec
 tfupdate
 tgui
 thanos
+the-way
 theharvester
 thrift
 thriftgo
@@ -2993,6 +3118,7 @@ tile38
 timg
 tin
 tintin
+tiny
 tinymist
 tinyproxy
 tio
@@ -3001,6 +3127,7 @@ titlecase
 tkey-ssh-agent
 tlsx
 tmpmail
+tmt
 tmux-mem-cpu-load
 tmux-sessionizer
 tmux-xpanes
@@ -3012,6 +3139,7 @@ tofuenv
 toipe
 tomcat
 tomcat-native
+tomcat@10
 tomcat@9
 tomee-plume
 tomee-plus
@@ -3023,6 +3151,7 @@ topfew
 topgrade
 topiary
 tor
+totp-cli
 tox
 toxcore
 toxiproxy
@@ -3054,12 +3183,14 @@ tt
 ttdl
 ttyd
 ttyplot
+tuisky
 tup
 twine
 txr
 tygo
 typescript
 typescript-language-server
+typeshare
 typewritten
 typical
 typos-cli
@@ -3092,11 +3223,13 @@ urdfdom
 urdfdom_headers
 uriparser
 urlscan
+urlwatch
 usb.ids
 usbredir
 usbutils
 userspace-rcu
 utf8cpp
+utf8proc
 util-linux
 util-macros
 uutils-coreutils
@@ -3114,6 +3247,7 @@ vale
 valgrind
 valijson
 valkey
+vals
 vapor
 vapoursynth
 varnish
@@ -3131,6 +3265,7 @@ verapdf
 vercel-cli
 verilator
 verovio
+versitygw
 vet
 vexctl
 vfox
@@ -3171,7 +3306,9 @@ vtclock
 vte3
 vtk
 vue-cli
+vue-language-server
 vulkan-extensionlayer
+vulkan-validationlayers
 vulkan-volk
 vulsio-gost
 vultr
@@ -3181,6 +3318,7 @@ vvdec
 vvenc
 wabt
 waffle
+wails
 wakatime-cli
 walk
 wallpaper
@@ -3192,6 +3330,7 @@ wasm-tools
 wasmedge
 wasmer
 wasmtime
+watch
 watchexec
 wavpack
 wayland
@@ -3248,6 +3387,7 @@ xa
 xapian
 xauth
 xbyak
+xc
 xcb-util-cursor
 xcbeautify
 xcdiff
@@ -3259,6 +3399,7 @@ xdg-ninja
 xdpyinfo
 xeol
 xerces-c
+xfig
 xgboost
 xh
 xkbcomp
@@ -3267,6 +3408,7 @@ xlsxio
 xmake
 xmlrpc-c
 xmount
+xmq
 xmrig
 xnvme
 xonsh
@@ -3326,6 +3468,7 @@ zf
 zfind
 zig
 zigmod
+zim
 zipkin
 zizmor
 zk

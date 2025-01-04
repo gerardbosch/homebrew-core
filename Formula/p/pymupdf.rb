@@ -1,27 +1,28 @@
 class Pymupdf < Formula
   desc "Python bindings for the PDF toolkit and renderer MuPDF"
   homepage "https://pymupdf.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/d2/9e/ec6139116b551922789eb72e710371ddd770a2236fbd5302c2a58670ebbc/pymupdf-1.25.0.tar.gz"
-  sha256 "9e5a33816e4b85ed6a01545cada2b866fc280a3b6478bb8e19c364532adf6692"
+  url "https://files.pythonhosted.org/packages/c3/88/76c076c152be6d29a792defc3b3bff73de7f690e55f978b66adf6dbb8a1a/pymupdf-1.25.1.tar.gz"
+  sha256 "6725bec0f37c2380d926f792c262693c926af7cc1aa5aa2b8207e771867f015a"
   license "AGPL-3.0-only"
+  revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8bf25283fa3c5cac15aac6ceae8cf21a453ce0e5d262cd33e3cb0c5c61b04bd3"
-    sha256 cellar: :any,                 arm64_sonoma:  "658c1af105b0e04459661c957a89da3c88d1e41c17a0d71698f9ce12c3048f5c"
-    sha256 cellar: :any,                 arm64_ventura: "df735af404008080316a71ce707e956b2ec97f198b43f1fcf3de05d88c191159"
-    sha256 cellar: :any,                 sonoma:        "b332010dd3ea76c8edf92d6ef81cf3b5e383a67442f71e3f2f507f3401bfa517"
-    sha256 cellar: :any,                 ventura:       "b7087c63a343959719e9080b696d78a6876b26557fb5cbe73ad8153b56574a73"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3d92eb542ce63a3f0f390ceb4057eb20c44dbbcbe2fb5b1df85279f3e757a30d"
+    sha256 cellar: :any,                 arm64_sequoia: "a0a0d6d5d52c2df6d185d17f4f9d1388771e9f0e3f68ec57265018c2af66c1da"
+    sha256 cellar: :any,                 arm64_sonoma:  "4275efa7ba73aa82f58c3cd10dee0e385ef84a68364440c082c11c2b6a72ed48"
+    sha256 cellar: :any,                 arm64_ventura: "22565e2b266cdff2d7f5c366104fd5a0152af4b1c5adcdebda487327ac61ca18"
+    sha256 cellar: :any,                 sonoma:        "77877a7112734587723dde759a92455c9699ea03c41b117ec8ea73ee43ade710"
+    sha256 cellar: :any,                 ventura:       "26437e1a692e91124e889971cb3644169672045f06b060bf6f0995af3a283a8d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f328e77395128b0e5c984fdcfec59f5fd29316d7c479a6e77cc71d60b3a0d3fb"
   end
 
   depends_on "freetype" => :build
   depends_on "python-setuptools" => :build
   depends_on "swig" => :build
   depends_on "mupdf"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
 
   def python3
-    "python3.12"
+    "python3.13"
   end
 
   def install

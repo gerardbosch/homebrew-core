@@ -4,7 +4,7 @@ class GitInteractiveRebaseTool < Formula
   url "https://github.com/MitMaro/git-interactive-rebase-tool/archive/refs/tags/2.4.1.tar.gz"
   sha256 "0b1ba68a1ba1548f44209ce1228d17d6d5768d72ffa991909771df8e9d42d70d"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 3
 
   livecheck do
     url :stable
@@ -12,21 +12,25 @@ class GitInteractiveRebaseTool < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "9db02f1036165ea5581b513a08f73988438cf04523585b2b6bba5b02568fe123"
-    sha256 cellar: :any,                 arm64_sonoma:   "fb5993c4312324326b25f1e2209b6fcbe88fc98352db69fdb07c0b5c63e42873"
-    sha256 cellar: :any,                 arm64_ventura:  "0bf45047f460751efed83d895546c79188af0933cba013160a8a0fe0cedb7b89"
-    sha256 cellar: :any,                 arm64_monterey: "72a6adb852a9d40a838a9136717148b2aaf1e70f832e5edc599d33f87fd77149"
-    sha256 cellar: :any,                 sonoma:         "fca7280d997fbac58b67ad6b55e627805353ec814fd0a23fa3883a699def7326"
-    sha256 cellar: :any,                 ventura:        "8f8ffe5ca81753b46ff1df663fe9219baa5a9e331d3abd29f91af0f97a077a95"
-    sha256 cellar: :any,                 monterey:       "8512328d56cf54e7f7c712b985b84ee6267df174eb45e514f8da300f312a0905"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f7aa1b32fbfe987e86fdd9aa2a914c14a041341b9a7ce781555b68ca325b2e31"
+    sha256 cellar: :any,                 arm64_sequoia: "926261f60068a32cd3229d3ebbea05a4fda9316cd61e0c8b31ad562a70fe0539"
+    sha256 cellar: :any,                 arm64_sonoma:  "6f0be8265fa58fc803e26490fbd39eafef6920195d6330d6dec870a8adf32b31"
+    sha256 cellar: :any,                 arm64_ventura: "b43f15e6d752a5855bb8eb3c173ff2e40852e47bc5532f4b6501b7c2ce6cd7a9"
+    sha256 cellar: :any,                 sonoma:        "7a792dcaa2cdd389bc5bb37bacc87be3b89a88c4bfec8ce1bd5149eb62c0a4eb"
+    sha256 cellar: :any,                 ventura:       "ee00b033f71d593edf749bd9d476b01cc03e307a1e3935741802868061d3d022"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "52b752d2fdf28e1cd087140f6ab05d05698fc3021b80821034ad55e273d8f15d"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-  depends_on "libgit2@1.7"
+  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
 
   uses_from_macos "zlib"
+
+  # support libgit2 1.8, upstream pr ref, https://github.com/MitMaro/git-interactive-rebase-tool/pull/948
+  patch do
+    url "https://github.com/MitMaro/git-interactive-rebase-tool/commit/508291ca003d5cd380a1c34f27efde913b488888.patch?full_index=1"
+    sha256 "1256c6e9fa3a7c3ed196d30a2a35b9c05e06434ed954e8a4e58e1d2ceb1ae7d8"
+  end
 
   def install
     ENV["LIBGIT2_NO_VENDOR"] = "1"
@@ -69,7 +73,7 @@ class GitInteractiveRebaseTool < Formula
     assert_equal expected_git_rebase_todo, todo_file.read
 
     [
-      Formula["libgit2@1.7"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.8"].opt_lib/shared_library("libgit2"),
     ].each do |library|
       assert check_binary_linkage(bin/"interactive-rebase-tool", library),
              "No linkage with #{library.basename}! Cargo is likely using a vendored version."

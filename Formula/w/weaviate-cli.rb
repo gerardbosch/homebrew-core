@@ -3,17 +3,18 @@ class WeaviateCli < Formula
 
   desc "Command-line interface for managing and interacting with Weaviate"
   homepage "https://pypi.org/project/weaviate-cli/"
-  url "https://files.pythonhosted.org/packages/e2/aa/d49ae3e5d399d3bb4026188017220c4dcdd240d64de88df41259056c801a/weaviate_cli-3.0.2.tar.gz"
-  sha256 "7a4a3ced248678a6d006ce849edf1d97b15237605f2735bb5ea7882b954c1fdb"
+  url "https://files.pythonhosted.org/packages/37/79/75caf6d526134149bec73797e18ef9ad0a691e1ec931faa4563afbc4291b/weaviate_cli-3.1.0.tar.gz"
+  sha256 "3ac08511160d442469cdabd69e30b3285bf4efc93db640caf8e6762c4cad105b"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "3c9202fdeab0842370016b7529e45022d3b8e9637c41f5d09b814f3a873462d0"
-    sha256 cellar: :any,                 arm64_sonoma:  "72b9e448fb259cb00f5a087a909a2c731c4f7fa08ad80939963a37f6d0fcf12f"
-    sha256 cellar: :any,                 arm64_ventura: "21c9e63e229aeffadace9fc0a3f3c4a6ce1e94a7bbc4dc77a20763af705db927"
-    sha256 cellar: :any,                 sonoma:        "00592cdc69f9dfec1770eb267cb30eed2e4f7be2ea8afc43b366a6bc8aa047be"
-    sha256 cellar: :any,                 ventura:       "e7cd0b207eda3fe275433f54762ec7c29c07e22bf92871e8596ceccf2ec5a0dd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "71c8f82451b3e15a5283c1c069ffc72758fbf81898f27d3d8df75b72beae8310"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "6dd619c357043fa50f5ed1f65a418e5a61efdb143763561fa7cf1c06065478e5"
+    sha256 cellar: :any,                 arm64_sonoma:  "878f7fcff0597d438c15152833202a5c4b4d1970954bc75314e1a5eb3c18ecdb"
+    sha256 cellar: :any,                 arm64_ventura: "bf9b5916ffa470db8a5f670ab72894634e8620535dcfc21fb7cb345b744957cb"
+    sha256 cellar: :any,                 sonoma:        "44fa8c2db5d7c231384ebc76757fa842f7ab3e3f6e24dc23b743193a793f73d1"
+    sha256 cellar: :any,                 ventura:       "9009c22088311092c3fbec785332fbc0e03cf22d524c1383f33c353c2cbd8e7d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fa9185e3c2df34b8a81daf9fc6011bff434e61a09edece1877f3e39099d21a18"
   end
 
   depends_on "ninja" => :build
@@ -43,11 +44,6 @@ class WeaviateCli < Formula
   resource "authlib" do
     url "https://files.pythonhosted.org/packages/09/47/df70ecd34fbf86d69833fe4e25bb9ecbaab995c8e49df726dd416f6bb822/authlib-1.3.1.tar.gz"
     sha256 "7ae843f03c06c5c0debd63c9db91f9fda64fa62a42a77419fa15fbb7e7a58917"
-  end
-
-  resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/f2/4f/e1808dc01273379acc506d18f1504eb2d299bd4131743b9fc54d7be4df1e/charset_normalizer-3.4.0.tar.gz"
-    sha256 "223217c3d4f82c3ac5e29032b3f1c2eb0fb591b72161f86d93f5719079dae93e"
   end
 
   resource "click" do
@@ -81,8 +77,8 @@ class WeaviateCli < Formula
   end
 
   resource "httpx" do
-    url "https://files.pythonhosted.org/packages/5c/2d/3da5bdf4408b8b2800061c339f240c1802f2e82d55e50bd39c5a881f47f0/httpx-0.27.0.tar.gz"
-    sha256 "a0cb88a46f32dc874e04ee956e4c2764aba2aa228f650b06788ba6bda2962ab5"
+    url "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz"
+    sha256 "75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc"
   end
 
   resource "idna" do
@@ -96,8 +92,8 @@ class WeaviateCli < Formula
   end
 
   resource "numpy" do
-    url "https://files.pythonhosted.org/packages/25/ca/1166b75c21abd1da445b97bf1fa2f14f423c6cfb4fc7c4ef31dccf9f6a94/numpy-2.1.3.tar.gz"
-    sha256 "aa08e04e08aaf974d4458def539dece0d28146d866a39da5639596f4921fd761"
+    url "https://files.pythonhosted.org/packages/47/1b/1d565e0f6e156e1522ab564176b8b29d71e13d8caf003a08768df3d5cec5/numpy-2.2.0.tar.gz"
+    sha256 "140dd80ff8981a583a60980be1a655068f8adebf7a45a06a6858c873fcdcd4a0"
   end
 
   resource "protobuf" do
@@ -113,11 +109,6 @@ class WeaviateCli < Formula
   resource "pydantic-core" do
     url "https://files.pythonhosted.org/packages/a6/9f/7de1f19b6aea45aeb441838782d68352e71bfa98ee6fa048d5041991b33e/pydantic_core-2.27.1.tar.gz"
     sha256 "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235"
-  end
-
-  resource "requests" do
-    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
-    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "semver" do
@@ -140,23 +131,20 @@ class WeaviateCli < Formula
     sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
-  resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz"
-    sha256 "e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
-  end
-
   resource "validators" do
     url "https://files.pythonhosted.org/packages/64/07/91582d69320f6f6daaf2d8072608a4ad8884683d4840e7e4f3a9dbdcc639/validators-0.34.0.tar.gz"
     sha256 "647fe407b45af9a74d245b943b18e6a816acf4926974278f6dd617778e1e781f"
   end
 
   resource "weaviate-client" do
-    url "https://files.pythonhosted.org/packages/5d/7d/3894d12065d006743271b0b6bcc3bf911910473e91179d5966966816d694/weaviate_client-4.9.6.tar.gz"
-    sha256 "56d67c40fc94b0d53e81e0aa4477baaebbf3646fbec26551df66e396a72adcb6"
+    url "https://files.pythonhosted.org/packages/85/b8/b5b2a26e2873f7fe4c11949dbebf57e0fb05928140a928b439fff5f87d80/weaviate_client-4.10.1.tar.gz"
+    sha256 "7a1513d0ce7d918100d255224da52fcfe3d0834a2d22069853ab95a2a17f102c"
   end
 
   def install
     virtualenv_install_with_resources
+
+    generate_completions_from_executable(bin/"weaviate-cli", shells: [:fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

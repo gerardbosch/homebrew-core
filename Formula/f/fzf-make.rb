@@ -1,22 +1,21 @@
 class FzfMake < Formula
   desc "Fuzzy finder with preview window for make, pnpm, & yarn"
   homepage "https://github.com/kyu08/fzf-make"
-  url "https://github.com/kyu08/fzf-make/archive/refs/tags/v0.44.0.tar.gz"
-  sha256 "bd75b11577e7b702474b462886e9645ebda05269894e0fb09d5219ccde9b6842"
+  url "https://github.com/kyu08/fzf-make/archive/refs/tags/v0.53.0.tar.gz"
+  sha256 "7f2efbfadbf05cd92d09d64f296621757291b798b372f72335fae6c0dd9c156b"
   license "MIT"
   head "https://github.com/kyu08/fzf-make.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d95a74e9f06c9f12dda9d489e9d87b4bc8ad1a336b02c89dfd2b5d4d02c06b3d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ba2d81999305134224064736c48492866c0cd7130f68fb5084db0b2c73330983"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "5d9d03f827e9cc00b560b1de6692edeb1bce430f86184f30fda16868f350f1c7"
-    sha256 cellar: :any_skip_relocation, sonoma:        "46d971ea8454c8a56845d0e7ea63d17ba47368f8ce71bdab1eec57288f78c41e"
-    sha256 cellar: :any_skip_relocation, ventura:       "290cc31faf41a589964968b285702acbafce2e1f5e4b2c7b6dad0f9042f4c4db"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "66b01f081f7cf02c57976c3b600f2da5f644e657a19e9bf2be47f1882e3c9d53"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "18060803254eb1d10e1318ec5efc314ac1379c973af3a18e2d84ca67914fd8e0"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "16bad69eefdcc2eba00f93f18f235d3f427269f5ed2f73173cbd2b6613711acc"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "db694b111ab497ee674f26d928772eef489e5c931360b6847af67c7582b3befe"
+    sha256 cellar: :any_skip_relocation, sonoma:        "12ca6d1e963e0dc81298043b0dd4e99ddf6a2357bac7201b4515c5cc8a54c4b2"
+    sha256 cellar: :any_skip_relocation, ventura:       "d9eef07a826f7eb822ebec07ef636340b770c2cc191f27bbbb3769e01e2fdc24"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2cebfc1daf9e5a416031108a7a0200174bbf876e3454351f7706bb9022a530d2"
   end
 
   depends_on "rust" => :build
-  depends_on "bat"
 
   def install
     system "cargo", "install", *std_cargo_args
@@ -36,6 +35,7 @@ class FzfMake < Formula
       output_log = testpath/"output.log"
       pid = spawn bin/"fzf-make", [:out, :err] => output_log.to_s
       sleep 5
+      sleep 5 if OS.mac? && Hardware::CPU.intel?
       assert_match "make brew", output_log.read
     ensure
       Process.kill("TERM", pid)

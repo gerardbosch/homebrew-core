@@ -3,11 +3,20 @@ class Gnuradio < Formula
 
   desc "SDK for signal processing blocks to implement software radios"
   homepage "https://gnuradio.org/"
-  url "https://github.com/gnuradio/gnuradio/archive/refs/tags/v3.10.11.0.tar.gz"
-  sha256 "9ca658e6c4af9cfe144770757b34ab0edd23f6dcfaa6c5c46a7546233e5ecd29"
   license "GPL-3.0-or-later"
-  revision 2
+  revision 5
   head "https://github.com/gnuradio/gnuradio.git", branch: "main"
+
+  stable do
+    url "https://github.com/gnuradio/gnuradio/archive/refs/tags/v3.10.11.0.tar.gz"
+    sha256 "9ca658e6c4af9cfe144770757b34ab0edd23f6dcfaa6c5c46a7546233e5ecd29"
+
+    # Backport support for Boost 1.87.0
+    patch do
+      url "https://github.com/gnuradio/gnuradio/commit/111a4ff8b868791dae74d8cdf8c1e0684840f51a.patch?full_index=1"
+      sha256 "1a18b00346a149562ea2a1c8117039162896eb9ccab3290ed2a7a568ca9b642e"
+    end
+  end
 
   livecheck do
     url :stable
@@ -15,12 +24,12 @@ class Gnuradio < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "e32a74cda3c91f1f0bd6a048c94dc5381468e8a32e3ba124ecc67681ea85c93f"
-    sha256 cellar: :any,                 arm64_sonoma:  "ab3a5ff722ffc0f72f81d06c7997bf69399149e09947388ae136cbf77a7ec6c8"
-    sha256 cellar: :any,                 arm64_ventura: "9c4f6425905fbdd404f0ace01e1956e1a107a9a6fe8ffaab057030addcafa32f"
-    sha256 cellar: :any,                 sonoma:        "44daf20a7ebaa312e0e8462ec83ce877598c5f96d5b7942e31612a32528202c9"
-    sha256 cellar: :any,                 ventura:       "e7c4fff9fd885440d9e1c4d58a39bdaf59824247c1a2993898c557098d3c2661"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7fb99bd447fe6c57571f5bb8669661a6b5b037ba3d43eaa3776a23d1b57cd0a7"
+    sha256 cellar: :any,                 arm64_sequoia: "b5a69ca98194f4a789b67b278e12c5b21a6d55b25759cc1884176c8e26e6015f"
+    sha256 cellar: :any,                 arm64_sonoma:  "f3281080346ffc818c23199ad5d04de2888b824b3b9c0410f1a64805e6c7c824"
+    sha256 cellar: :any,                 arm64_ventura: "f98f7c0aebad4a933246718e007d6b17cd73e695b4589437ac2ee6ec26ac2d13"
+    sha256 cellar: :any,                 sonoma:        "90603f72df66f994cc93b5cf8a551217900fad96053fc8c24d49ffa95b38d617"
+    sha256 cellar: :any,                 ventura:       "72ccfe1ec4474abc73d60dafd1a7843f9e99fb172f9e9a94d46d001e7f3db0bc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cdd9096bf4fd0914ce2b68483a50ec240ab42ee331dfad7bdc3284de9098161d"
   end
 
   depends_on "cmake" => :build
@@ -67,7 +76,6 @@ class Gnuradio < Formula
   #
   # The following are paths where packages are used:
   # * click - gr-utils/modtool/cli/
-  # * click-plugins - gr-utils/modtool/cli/base.py
   # * jsonschema - grc/blocks/json_config.block.yml
   # * lxml - grc/converter/xml.py
   # * mako - grc/
@@ -84,11 +92,6 @@ class Gnuradio < Formula
   resource "click" do
     url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
     sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
-  end
-
-  resource "click-plugins" do
-    url "https://files.pythonhosted.org/packages/5f/1d/45434f64ed749540af821fd7e42b8e4d23ac04b1eda7c26613288d6cd8a8/click-plugins-1.1.1.tar.gz"
-    sha256 "46ab999744a9d831159c3411bb0c79346d94a444df9a3a3742e9ed63645f264b"
   end
 
   resource "jsonschema" do
@@ -250,9 +253,11 @@ class Gnuradio < Formula
         top.run();
       }
     CPP
-    system ENV.cxx, testpath/"test.c++", "-std=c++17", "-L#{lib}",
+
+    boost = Formula["boost"]
+    system ENV.cxx, testpath/"test.c++", "-std=c++17", "-I#{boost.opt_include}", "-L#{lib}",
            "-lgnuradio-blocks", "-lgnuradio-runtime", "-lgnuradio-pmt",
-           "-L#{Formula["boost"].opt_lib}", "-lboost_system",
+           "-L#{boost.opt_lib}", "-lboost_system",
            "-L#{Formula["log4cpp"].opt_lib}", "-llog4cpp",
            "-L#{Formula["fmt"].opt_lib}", "-lfmt",
            "-o", testpath/"test"

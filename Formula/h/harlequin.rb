@@ -9,39 +9,34 @@ class Harlequin < Formula
   revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "d327c5e1013345211e3a894fc2d10bdf46dca614f83e0ebebc9258a01089a1de"
-    sha256 cellar: :any,                 arm64_sonoma:  "d65c283f803a1bf8fbe99cd17c740aca004272abe402f61f449beb5fb349d7e6"
-    sha256 cellar: :any,                 arm64_ventura: "020cbd6e8a07305909b652e7ab7341b3e4c60ff9a0c4594df626e7ae5e206694"
-    sha256 cellar: :any,                 sonoma:        "e0cef61d30667fe5292ccea4842dc71d5b5f5bc1ee0ed104d4a5adb021407e81"
-    sha256 cellar: :any,                 ventura:       "956cb46e3412663c5c8052b9e4cc8e415c95ab58137854a28e132da014bb76ea"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1e0dc40172e61510046526d73ed86362915af6057330103c286a93126626058c"
+    rebuild 2
+    sha256 cellar: :any,                 arm64_sequoia: "ff9ca22dd577969e4046a7d19e2e35d2c711aff5aaff3c9906735a05bac39e5a"
+    sha256 cellar: :any,                 arm64_sonoma:  "aa028ed4062093f9bd1a36402dbee8d6738fe05ea9a0e7979f689bbf068eff14"
+    sha256 cellar: :any,                 arm64_ventura: "906028123044564ff52cce6ce375a6f16a18bf433e598b4e5f1236b5b1bc41b2"
+    sha256 cellar: :any,                 sonoma:        "6badd876b8506a2faaee418e755d91083717f69b37a794f06e28e7dc07e4f654"
+    sha256 cellar: :any,                 ventura:       "9b0419339b26a27b688fd5ad7b17ca4398fae7d3b9ff6a9fa58eb70c290f2c74"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "18df828eb40768b110b792b501074aced524fd49714c5611cca4dfff039e14ae"
   end
 
   depends_on "cmake" => :build
-  depends_on "mysql" => :build # mysql-connector-python
   depends_on "ninja" => :build
   depends_on "apache-arrow"
   depends_on "libpq" # psycopg
-  depends_on "python@3.11"
+  depends_on "python@3.12" # Python 3.13: https://github.com/tconbeer/harlequin/issues/697
   depends_on "unixodbc" # harlequin-odbc
 
   on_linux do
     depends_on "patchelf" => :build # for pyarrow
   end
 
-  resource "cython" do
-    url "https://files.pythonhosted.org/packages/2a/97/8cc3fe7c6de4796921236a64d00ca8a95565772e57f0d3caae68d880b592/Cython-0.29.37.tar.gz"
-    sha256 "f813d4a6dd94adee5d4ff266191d1d95bf6d4164a4facc535422c021b2504cfb"
-  end
-
-  resource "meson-python" do
-    url "https://files.pythonhosted.org/packages/a2/3b/276b596824a0820987fdcc7721618453b4f9a8305fe20b611a00ac3f948e/meson_python-0.15.0.tar.gz"
-    sha256 "fddb73eecd49e89c1c41c87937cd89c2d0b65a1c63ba28238681d4bd9484d26f"
-  end
-
   resource "click" do
     url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
     sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
+  end
+
+  resource "cython" do
+    url "https://files.pythonhosted.org/packages/84/4d/b720d6000f4ca77f030bd70f12550820f0766b568e43f11af7f7ad9061aa/cython-3.0.11.tar.gz"
+    sha256 "7146dd2af8682b4ca61331851e6aebce9fe5158e75300343f80c07ca80b1faff"
   end
 
   resource "duckdb" do
@@ -164,6 +159,11 @@ class Harlequin < Formula
     sha256 "a3eebe81da1c9da3c32f3810017c79bd687ff1b3fa35bfc9d8a3338797f1d1a1"
   end
 
+  resource "setuptools" do
+    url "https://files.pythonhosted.org/packages/43/54/292f26c208734e9a7f067aea4a7e282c080750c4546559b58e2e45413ca0/setuptools-75.6.0.tar.gz"
+    sha256 "8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"
+  end
+
   resource "shandy-sqlfmt" do
     url "https://files.pythonhosted.org/packages/39/38/f634ed73c65ba8e8061c65479af73e0b4afa53530af026489ca17b549559/shandy_sqlfmt-0.24.0.tar.gz"
     sha256 "ae34d34dc88ef4a2c97677d7d3d95d7f362908aa6f97e3fb0529cab4a96799ba"
@@ -229,6 +229,8 @@ class Harlequin < Formula
     resource("mysql-connector-python").stage do
       venv.pip_install Pathname.pwd/"mysql-connector-python"
     end
+
+    generate_completions_from_executable(bin/"harlequin", shells: [:fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

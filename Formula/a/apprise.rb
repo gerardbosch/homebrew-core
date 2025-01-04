@@ -3,18 +3,18 @@ class Apprise < Formula
 
   desc "Send notifications from the command-line to popular notification services"
   homepage "https://pypi.org/project/apprise/"
-  url "https://files.pythonhosted.org/packages/92/26/19c26dbf32d31129c50a3568022ae1c9d05c4aac056c0661d9bfea0f7810/apprise-1.9.0.tar.gz"
-  sha256 "b5c93afd6331afe4b63a55d1cea9076e47becb4ba89b562b181c13e25bb0c7d6"
+  url "https://files.pythonhosted.org/packages/88/f8/014fc92f4e6808da647e72a3478ea5df47de8f1e93cbac8ffcf8d771f6ca/apprise-1.9.1.tar.gz"
+  sha256 "79ecd02c41d86dffd211bb35cc5c06c846e777041abe1d0701f989980de44689"
   license "BSD-3-Clause"
 
   bottle do
     rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "c8410563e9ab8324e1e65d783f09745bc97a3141ca26b2e549c4dec6567ddcf5"
-    sha256 cellar: :any,                 arm64_sonoma:  "4f3079c53e3b844d5880ad27ca72fec9530417e5d31bb86cb066f4d4abc75024"
-    sha256 cellar: :any,                 arm64_ventura: "409bc85b9ad0ea05909423c9b1156dff8cb2dcc19c5e25cdfcb9446d076e5b0c"
-    sha256 cellar: :any,                 sonoma:        "6b233379c79071cf4a6378392479c3a0bab9a3dc1c0200f31fba4b33605d1358"
-    sha256 cellar: :any,                 ventura:       "1e45fbec2e51a3fbc435c069be50e47ab70ba8ada6daa7795d3a8cddfb170728"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d3a6039a267e09b8031cecc3359caaec72941690f165f9c5bf5a85677f05ef01"
+    sha256 cellar: :any,                 arm64_sequoia: "2c8b5786d1927f7b769e68fd06f763f09fd6fce5360ed61296d72a372e0c08ed"
+    sha256 cellar: :any,                 arm64_sonoma:  "c6a0810c73f86ce1288ba764ffbe730d5270705cf5549cfd098651072ecea6b1"
+    sha256 cellar: :any,                 arm64_ventura: "3d4738055b1690e2f8df10e964196132f94936d34d49837a599fc9f6cdf50868"
+    sha256 cellar: :any,                 sonoma:        "ee9b9ad8775db5b3501dc37da9f71348906ae64394fc4d2d38c9d4a655da7f13"
+    sha256 cellar: :any,                 ventura:       "17eccdd9f10fd9fe8ac7c7533da604c0f74d8f451128c5902958727c6b5bfb37"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "644b5d48906296ad74b35a9605e9ebe3f84453a8fecd6726969bd1e3dbdce0c6"
   end
 
   depends_on "certifi"
@@ -68,12 +68,14 @@ class Apprise < Formula
 
   def install
     virtualenv_install_with_resources
+
+    generate_completions_from_executable(bin/"apprise", shells: [:fish, :zsh], shell_parameter_format: :click)
   end
 
   test do
     # Setup a custom notifier that can be passed in as a plugin
-    file = "#{testpath}/brewtest_notifier.py"
-    apprise_plugin_definition = <<~PYTHON
+    file = testpath/"brewtest_notifier.py"
+    file.write <<~PYTHON
       from apprise.decorators import notify
 
       @notify(on="brewtest")
@@ -81,8 +83,6 @@ class Apprise < Formula
         # A simple test - print to screen
         print("{}: {}".format(title, body))
     PYTHON
-
-    File.write(file, apprise_plugin_definition)
 
     charset = Array("A".."Z") + Array("a".."z") + Array(0..9)
     title = charset.sample(32).join

@@ -1,9 +1,10 @@
 class Mise < Formula
   desc "Polyglot runtime manager (asdf rust clone)"
   homepage "https://mise.jdx.dev/"
-  url "https://github.com/jdx/mise/archive/refs/tags/v2024.12.5.tar.gz"
-  sha256 "0b7b2bb056bc9429d585c8c23202b1c299793e9b7b72017e3f7b5df390b25ad8"
+  url "https://github.com/jdx/mise/archive/refs/tags/v2025.1.0.tar.gz"
+  sha256 "51e56a831cbedece92b1e3e5eaad92afae9d133503881ad18f229ea41e24a618"
   license "MIT"
+  revision 1
   head "https://github.com/jdx/mise.git", branch: "main"
 
   livecheck do
@@ -12,18 +13,18 @@ class Mise < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "374730306dc4514d838a04ddef71087da24437210fc64781053f576105b5d8bf"
-    sha256 cellar: :any,                 arm64_sonoma:  "949d982e11b748b3ddef024eb7fd8049cfa6127577536101d61c460e39445de7"
-    sha256 cellar: :any,                 arm64_ventura: "99940fa62a7dcfcc21e3c529748fd90d4c31bedc005bc92f3513ed06e4e4546a"
-    sha256 cellar: :any,                 sonoma:        "a62bcaff3a871086b2830511756755f2eb05225f7e563619d7b2bb69ea6a508e"
-    sha256 cellar: :any,                 ventura:       "70706b1a8028b14aadbe2255f3de084ad270c5af114c975237854258b26e24e7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ec5ba776fd67eac34ac0fcfb1c331c353578c4bea12330b9e4b6d056e5797234"
+    sha256 cellar: :any,                 arm64_sequoia: "46bcc766c5d6d7da4c937d40850d787d1cfb11e013e104a18b258a617cd2f2bb"
+    sha256 cellar: :any,                 arm64_sonoma:  "49cda77fdf35ed092bb3a4fbd2843bc0526b93958a367fe541e333a7cd9b531a"
+    sha256 cellar: :any,                 arm64_ventura: "a45b8c3e5faaff7fcc6ea15a96bfe4c35b9c75a263f9f86f9e87ee514b7b459b"
+    sha256 cellar: :any,                 sonoma:        "6d41f8d3fcb638391bd8d90ed3957c935fadcba6360918821f984a605f4d66ed"
+    sha256 cellar: :any,                 ventura:       "48326d6d80a44a2a38c35e976e864c391f226374d616b9b4c7962340bf5dbce7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ee943f018a705141bdc9d7673938c6658de88c46a915ded8eb6b31cc5ca20004"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
 
-  depends_on "libgit2"
+  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
   depends_on "openssl@3"
   depends_on "usage"
 
@@ -72,7 +73,7 @@ class Mise < Formula
     assert_match "1.23", shell_output("#{bin}/mise exec -- go version")
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.8"].opt_lib/shared_library("libgit2"),
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
     ].each do |library|

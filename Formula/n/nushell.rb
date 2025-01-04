@@ -1,9 +1,10 @@
 class Nushell < Formula
   desc "Modern shell for the GitHub era"
   homepage "https://www.nushell.sh"
-  url "https://github.com/nushell/nushell/archive/refs/tags/0.100.0.tar.gz"
-  sha256 "00b94984d3140e286e06d4beca2926ef80e0a0cc3ada75916e4fb9fa66ec28ad"
+  url "https://github.com/nushell/nushell/archive/refs/tags/0.101.0.tar.gz"
+  sha256 "43e4a123e86f0fb4754e40d0e2962b69a04f8c2d58470f47cb9be81daabab347"
   license "MIT"
+  revision 1
   head "https://github.com/nushell/nushell.git", branch: "main"
 
   livecheck do
@@ -13,12 +14,12 @@ class Nushell < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "5c64c40787d7f86a2624578665b4c0ff85b1f178ceed5317865e98e67e611692"
-    sha256 cellar: :any,                 arm64_sonoma:  "5e411c48e436dc5c9f248817e0e26e84a2b9c82267f02f4aba56e021018d7b40"
-    sha256 cellar: :any,                 arm64_ventura: "2c1f7209af58d594a8cccc21dbdf0b2505c41d36e021f877e97852d57e806cfb"
-    sha256 cellar: :any,                 sonoma:        "a2bee87a4957c6ba06773834f004c6138ccbb47da137acfd6676429c3ee3a63e"
-    sha256 cellar: :any,                 ventura:       "2bb9097ab6d213cb03702a3e0b855cc384a26d4af7aaed685fc15e712b300b0b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "056d17777cad32b565f7f94c6dc81274e6b8e1746339808b23fbb24d5c3b7b21"
+    sha256 cellar: :any,                 arm64_sequoia: "62e10339cf5c4ff5c7843d847e4273196db19ae731acdf13dc69e812ea5720d0"
+    sha256 cellar: :any,                 arm64_sonoma:  "0ddf79eae5d8ebd70131436862ea88fd0f8edb1882057061bf9bb82636b78818"
+    sha256 cellar: :any,                 arm64_ventura: "ca2991396f58784cf3cb26924b8d940610f787f195d64c32514b167c34342a16"
+    sha256 cellar: :any,                 sonoma:        "6fb7e6320828abfaca040d0afc32da95df84fef057220df6c78881bca559a83d"
+    sha256 cellar: :any,                 ventura:       "d892426eb6a147c2abf2b94808caabe64ffd4f25a56b60eceb510dccb78bba4c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e77c7dd2a77f4cbfce2deb012c6481a8c7898615216f320e8f887dc688f693be"
   end
 
   depends_on "rust" => :build
@@ -29,7 +30,7 @@ class Nushell < Formula
 
   on_linux do
     depends_on "pkgconf" => :build
-    depends_on "libgit2" # for `nu_plugin_gstat`
+    depends_on "libgit2@1.8" # for `nu_plugin_gstat`
     depends_on "libx11"
     depends_on "libxcb"
   end

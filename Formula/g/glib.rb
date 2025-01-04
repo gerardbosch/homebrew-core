@@ -3,17 +3,18 @@ class Glib < Formula
 
   desc "Core application library for C"
   homepage "https://docs.gtk.org/glib/"
-  url "https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz"
-  sha256 "ab45f5a323048b1659ee0fbda5cecd94b099ab3e4b9abf26ae06aeb3e781fd63"
+  url "https://download.gnome.org/sources/glib/2.82/glib-2.82.4.tar.xz"
+  sha256 "37dd0877fe964cd15e9a2710b044a1830fb1bd93652a6d0cb6b8b2dff187c709"
   license "LGPL-2.1-or-later"
 
   bottle do
-    sha256 arm64_sequoia: "1c59c3a26014dfb7600a87c990581e6d0792cfbaa99b74a074ce148155b5d943"
-    sha256 arm64_sonoma:  "2a2a3aee202d26ffe9ad335f95bad32039422d295928a04c7718718b13f51128"
-    sha256 arm64_ventura: "87a49358961d8d5f9c928d135fe16b19e9e5d5730bdd5882ba1a66678889b31f"
-    sha256 sonoma:        "8475a750c4781fea4b855830122161bc099eea855a4602220191913d39cc6108"
-    sha256 ventura:       "635ce24d5a4bdd5abb7d49d83e089aee4fbea757478a89e29519201757269c9f"
-    sha256 x86_64_linux:  "3357a6c04dc78db3f79a0e01ff0a5515a1c2745c111b5adbf7d81aa8a60c77eb"
+    rebuild 1
+    sha256 arm64_sequoia: "cb7e1e45b994e3bf05cc2b21427368d9e417589017786f789c7aefa585b2c0b3"
+    sha256 arm64_sonoma:  "26c4a5cd06dc075dabe28e94dba63742d881343d4fde244b29126086eefb3711"
+    sha256 arm64_ventura: "7108b33ae6d63a669c4bc13a60c2c664b5498691c5dcdb3d40e0e8fbd66a0585"
+    sha256 sonoma:        "1c127e38938c337d06f4dcbee381249f5caee71ae479d2c69c2fe37aad02d0f6"
+    sha256 ventura:       "d13fc9b102ae989dcc0da96b2162269020479da5523f3df1d3d05373345a7ae2"
+    sha256 x86_64_linux:  "275da32f00d6860c91be2ece5094c320638252f1a066fd53ba891ecd378e694e"
   end
 
   depends_on "bison" => :build # for gobject-introspection
@@ -28,6 +29,7 @@ class Glib < Formula
 
   uses_from_macos "flex" => :build # for gobject-introspection
   uses_from_macos "libffi", since: :catalina
+  uses_from_macos "zlib"
 
   on_macos do
     depends_on "gettext"
@@ -54,8 +56,8 @@ class Glib < Formula
 
   # replace several hardcoded paths with homebrew counterparts
   patch do
-    url "https://raw.githubusercontent.com/Homebrew/formula-patches/43467fd8dfc0e8954892ecc08fab131242dca025/glib/hardcoded-paths.diff"
-    sha256 "d81c9e8296ec5b53b4ead6917f174b06026eeb0c671dfffc4965b2271fb6a82c"
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/b46d8deae6983110b4e39bb2971bcbd10bb59716/glib/hardcoded-paths.diff"
+    sha256 "d846efd0bf62918350da94f850db33b0f8727fece9bfaf8164566e3094e80c97"
   end
 
   def install

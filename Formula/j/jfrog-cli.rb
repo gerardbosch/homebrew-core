@@ -1,8 +1,8 @@
 class JfrogCli < Formula
   desc "Command-line interface for JFrog products"
   homepage "https://www.jfrog.com/confluence/display/CLI/JFrog+CLI"
-  url "https://github.com/jfrog/jfrog-cli/archive/refs/tags/v2.72.2.tar.gz"
-  sha256 "99811398c2a03c15f3bb524b45452226f19fc2e11cff7e32ba0f9b8f2bf2ea65"
+  url "https://github.com/jfrog/jfrog-cli/archive/refs/tags/v2.72.5.tar.gz"
+  sha256 "394227ae2d46c53c0e359c25b5502428521a43af06f4692c9bfa27ee495a8a55"
   license "Apache-2.0"
   head "https://github.com/jfrog/jfrog-cli.git", branch: "v2"
 
@@ -15,12 +15,12 @@ class JfrogCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d29864ff2444b63e05b09b02396c6bbcb07ed23dfc02ddd060e7fd0289402f1e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d29864ff2444b63e05b09b02396c6bbcb07ed23dfc02ddd060e7fd0289402f1e"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "d29864ff2444b63e05b09b02396c6bbcb07ed23dfc02ddd060e7fd0289402f1e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "eb4c0605350b08ddafd289d7baab01d1277c48f573750b290b6eccdee777ad96"
-    sha256 cellar: :any_skip_relocation, ventura:       "eb4c0605350b08ddafd289d7baab01d1277c48f573750b290b6eccdee777ad96"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "248fbeee1dc39bfc3bd93b6c3b6b03f440e3fb0dcd3704fb1b52be207d82619b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9fa5f0cee9bd4fcaead7308ccfc560fa3a54f811dc0f91c9b301b0c5c18d341d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9fa5f0cee9bd4fcaead7308ccfc560fa3a54f811dc0f91c9b301b0c5c18d341d"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "9fa5f0cee9bd4fcaead7308ccfc560fa3a54f811dc0f91c9b301b0c5c18d341d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "32249fe651c4d00c507d2e08be993f86731d7827f7b2da4e3018609b979273a7"
+    sha256 cellar: :any_skip_relocation, ventura:       "32249fe651c4d00c507d2e08be993f86731d7827f7b2da4e3018609b979273a7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c693c0c4bc29046d6790ea809c57008872f8c2be65652da08d1cabaa76f4e34"
   end
 
   depends_on "go" => :build
@@ -29,7 +29,7 @@ class JfrogCli < Formula
     system "go", "build", *std_go_args(ldflags: "-s -w", output: bin/"jf")
     bin.install_symlink "jf" => "jfrog"
 
-    generate_completions_from_executable(bin/"jf", "completion", base_name: "jf")
+    generate_completions_from_executable(bin/"jf", "completion")
   end
 
   test do

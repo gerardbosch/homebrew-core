@@ -4,15 +4,15 @@ class EtcdCppApiv3 < Formula
   url "https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3/archive/refs/tags/v0.15.4.tar.gz"
   sha256 "4516ecfa420826088c187efd42dad249367ca94ea6cdfc24e3030c3cf47af7b4"
   license "BSD-3-Clause"
-  revision 19
+  revision 21
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "70015fab22dae7d329ae91b5d0250d858b9ccf40ab72bbc2bf2da0f7c8ee7f3b"
-    sha256 cellar: :any,                 arm64_sonoma:  "bd34f08f591a79b4900527c50893b53c2ce6c989c5804f8a1ae9839cdb6b981d"
-    sha256 cellar: :any,                 arm64_ventura: "16a834c645392bee0a1327fe6caefe18aadb7e8d25885cfb83183de32e805ad0"
-    sha256 cellar: :any,                 sonoma:        "04b5eb8991359e03507bf1ee905dfc0e45f07ac4e933f92e1b15d5b1421eae4d"
-    sha256 cellar: :any,                 ventura:       "d0989833efd3464806a3fc301e87725b24e3c037b3ce9edef21e9b237d68bff7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "745eb7731ea238c4f2f9b4d1be306dd12daadf5e3d6d26806ab6d0b3882f636a"
+    sha256 cellar: :any,                 arm64_sequoia: "6d6ae84407c0758d8265f332e16caec88621738d04991b52c6d72dea9646c5e7"
+    sha256 cellar: :any,                 arm64_sonoma:  "e92b1654ced5064dd7daa6823f599b90b91d021527fc1d3a38f7d498ffb049ba"
+    sha256 cellar: :any,                 arm64_ventura: "551a82cabf43176e8d4b6df58a13246007a96cf099a140e2ed7b206012eabce3"
+    sha256 cellar: :any,                 sonoma:        "7dfd094adf73d03420eda38b5421257ff5a004ac8a577c35ccee2fb412df78fa"
+    sha256 cellar: :any,                 ventura:       "e98303ed7aa84cbfa5b43f6c11c43cb4bc4b7df9ea30fa51e91b598854ba86ce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2cd649cf7819ea4f55d89def271add076425b935e7b27a8bd7637209d50d44b7"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -69,9 +69,16 @@ class EtcdCppApiv3 < Formula
       target_link_libraries(test_etcd_cpp_apiv3 PRIVATE etcd-cpp-api)
     CMAKE
 
+    ENV.append_path "CMAKE_PREFIX_PATH", Formula["boost@1.85"].opt_prefix
     ENV.delete "CPATH"
-    system "cmake", ".", "-Wno-dev", "-DCMAKE_BUILD_RPATH=#{HOMEBREW_PREFIX}/lib"
-    system "cmake", "--build", "."
+
+    args = %W[
+      -Wno-dev
+      -DCMAKE_BUILD_RPATH=#{HOMEBREW_PREFIX}/lib
+    ]
+
+    system "cmake", "-S", ".", "-B", "build", *args
+    system "cmake", "--build", "build"
 
     # prepare etcd
     etcd_pid = spawn(
@@ -85,7 +92,7 @@ class EtcdCppApiv3 < Formula
     # sleep to let etcd get its wits about it
     sleep 10
 
-    assert_equal("bar\n", shell_output("./test_etcd_cpp_apiv3"))
+    assert_equal("bar\n", shell_output("./build/test_etcd_cpp_apiv3"))
   ensure
     # clean up the etcd process before we leave
     Process.kill("HUP", etcd_pid)

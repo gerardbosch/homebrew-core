@@ -1,10 +1,12 @@
 class Notmuch < Formula
+  include Language::Python::Shebang
+
   desc "Thread-based email index, search, and tagging"
   homepage "https://notmuchmail.org/"
   url "https://notmuchmail.org/releases/notmuch-0.38.3.tar.xz"
   sha256 "9af46cc80da58b4301ca2baefcc25a40d112d0315507e632c0f3f0f08328d054"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
   head "https://git.notmuchmail.org/git/notmuch", using: :git, branch: "master"
 
   livecheck do
@@ -13,12 +15,13 @@ class Notmuch < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "afae4f2b51443c43285f1b7d1d8797ee8d43d24dc3ad7fea1d3364750a92804f"
-    sha256 cellar: :any,                 arm64_sonoma:  "2db7f9945c689431fb604b28d6f4edd0937497c657b481ae5c51e0998639ddd7"
-    sha256 cellar: :any,                 arm64_ventura: "d61604e6ce8d0c6c3dd341202de51b549ff9d8e3a34796ec7cd5d20079d80b0a"
-    sha256 cellar: :any,                 sonoma:        "4c0c5abd1006da2c5235374c6ab5936997d39a3f819ad1131f07366a7d79af7f"
-    sha256 cellar: :any,                 ventura:       "2f162fc7fb07a9ead2c39667fb24ccca546a70021a3a7591e194c72e661e3070"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "15655e56f2cf0a0580b812cb2b9d5948ad6e5b395c43291432b9d2bdcdc44e8b"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "cd717cdea34175ce4b3ecb26f15594ed015483ce17e14204864b208afed3cf5e"
+    sha256 cellar: :any,                 arm64_sonoma:  "7844df568b86b1b6309c3aa0f6c4cf68ccb8a9b35fc90121b109d05a208b7cac"
+    sha256 cellar: :any,                 arm64_ventura: "592e3240392b89a60c68eba4c9bcb7d705c60733a3a8366642336c6369811cc4"
+    sha256 cellar: :any,                 sonoma:        "10fa6fbceadb544587d026f3591a1a43c3054cfce290f5d56beda33a201fc98b"
+    sha256 cellar: :any,                 ventura:       "3de2605deb58d1854e07fa28ac0730ee6ea82599510297a910d03df7cabbbb4a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1572f5f82da23d1493d0651c6294c7694f473c36c77d0d08c6f8d535c3ad700b"
   end
 
   depends_on "doxygen" => :build
@@ -31,6 +34,7 @@ class Notmuch < Formula
   depends_on "glib"
   depends_on "gmime"
   depends_on "python@3.13"
+  depends_on "sfsexp"
   depends_on "talloc"
   depends_on "xapian"
 
@@ -57,9 +61,11 @@ class Notmuch < Formula
                             "--without-ruby"
       system "make", "V=1", "install"
     end
+    bin.install "notmuch-git"
+    rewrite_shebang detected_python_shebang, bin/"notmuch-git"
 
     elisp.install Pathname.glob("emacs/*.el")
-    bash_completion.install "completion/notmuch-completion.bash"
+    bash_completion.install "completion/notmuch-completion.bash" => "notmuch"
 
     (prefix/"vim/plugin").install "vim/notmuch.vim"
     (prefix/"vim/doc").install "vim/notmuch.txt"
@@ -86,5 +92,7 @@ class Notmuch < Formula
       assert str(db.path) == '#{testpath}/Mail', 'Wrong db.path!'
       db.close()
     PYTHON
+    system bin/"notmuch-git", "-C", "#{testpath}/git", "init"
+    assert_path_exists testpath/"git"
   end
 end

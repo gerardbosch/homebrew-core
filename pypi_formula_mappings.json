@@ -1,4 +1,7 @@
 {
+  "acronym": {
+    "exclude_packages": ["numpy"]
+  },
   "aider": {
     "exclude_packages": ["certifi", "cffi", "numpy", "pillow", "scipy"]
   },
@@ -280,12 +283,12 @@
     "exclude_packages": ["certifi", "cryptography"]
   },
   "duplicity": {
-    "exclude_packages": ["certifi", "cryptography"],
+    "exclude_packages": ["certifi"],
     "extra_packages": ["python-novaclient>18", "stone==3.2.1"]
   },
   "dvc": {
     "package_name": "dvc[all]",
-    "exclude_packages": ["certifi", "cryptography", "numpy"]
+    "exclude_packages": ["certifi", "cryptography", "numpy", "pygit2"]
   },
   "dxpy": {
     "exclude_packages": ["cryptography", "certifi"]
@@ -368,7 +371,7 @@
   },
   "gnuradio": {
     "extra_packages": [
-      "click", "click-plugins", "jsonschema", "lxml", "mako",
+      "click", "jsonschema", "lxml", "mako",
       "packaging", "pygccxml", "pyyaml", "setuptools"
     ]
   },
@@ -402,6 +405,9 @@
   "grokmirror": {
     "exclude_packages": ["certifi"]
   },
+  "gsan": {
+    "exclude_packages": ["cryptography"]
+  },
   "gyb": {
     "package_name": "",
     "exclude_packages": ["certifi"],
@@ -428,6 +434,9 @@
     "exclude_packages": ["certifi"]
   },
   "huggingface-cli": {
+    "exclude_packages": ["certifi"]
+  },
+  "icloudpd": {
     "exclude_packages": ["certifi"]
   },
   "iconsur": {
@@ -486,6 +495,9 @@
   },
   "linode-cli": {
     "exclude_packages": ["certifi"]
+  },
+  "literate-git": {
+    "exclude_packages": ["pygit2"]
   },
   "liquidctl": {
     "exclude_packages": ["pillow"]
@@ -783,6 +795,9 @@
   "shodan": {
     "exclude_packages": ["certifi"]
   },
+  "showcert": {
+    "exclude_packages": ["certifi", "cryptography"]
+  },
   "shub": {
     "exclude_packages": ["certifi"]
   },
@@ -795,7 +810,7 @@
     "extra_packages": ["pysigma-backend-sqlite"]
   },
   "sigstore": {
-    "exclude_packages": ["certifi"]
+    "exclude_packages": ["certifi", "cryptography"]
   },
   "slither-analyzer": {
     "exclude_packages": ["certifi"]
@@ -836,6 +851,9 @@
     "exclude_packages": ["pygit2"]
   },
   "theharvester": {
+    "exclude_packages": ["certifi"]
+  },
+  "tmt": {
     "exclude_packages": ["certifi"]
   },
   "toot": {

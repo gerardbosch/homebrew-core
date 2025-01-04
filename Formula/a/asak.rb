@@ -1,20 +1,18 @@
 class Asak < Formula
   desc "Cross-platform audio recording/playback CLI tool with TUI"
   homepage "https://github.com/chaosprint/asak"
-  url "https://github.com/chaosprint/asak/archive/refs/tags/v0.3.3.tar.gz"
-  sha256 "e5c7da28f29e4e1e45aa57db4c4ab94278d59bd3bdb717ede7d04f04b1f7ed36"
+  url "https://github.com/chaosprint/asak/archive/refs/tags/v0.3.5.tar.gz"
+  sha256 "dd18f4c777bdba30a87ff4c2d3062ed6a15b8f4ed44f9a19d24fd3896c65aea6"
   license "MIT"
   head "https://github.com/chaosprint/asak.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "2795cbaf849109fa15956cad98395a3490e819de09b0e2d790b98b6b91f55069"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "3b49a2b7183e38d8afb462a21f0d2b3f8773e0f34cd848b234296e71de286a59"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "48cb2cf400c140c6e8cda9ebb5673d4163145e4faa5f4c93be4887f164e810ac"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "3f2a4f570ecee1f7bb25f79c6f85eac005afcb864cd98f14dbb235bc70e7b892"
-    sha256 cellar: :any_skip_relocation, sonoma:         "abf9484dec6102a52ecfa42ff1bd6c3bffe9cdeb790d5a809498eed73cde71cc"
-    sha256 cellar: :any_skip_relocation, ventura:        "7f01ddb93a0fc05e250b3f02714ff48a948846adb09d4ac4523731f1dbbfd751"
-    sha256 cellar: :any_skip_relocation, monterey:       "2c0ef06f470534c2f48ee34d1d711e7647bdc05d684a3e125c0ceb182549ae9c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fd7c4ef4628e5e217ffdb2734748773d871890232e3183ba7a09eacfe4f1a453"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "27f85372d811d595deb8fe3c4109b6f21e994239cc42960f20feef6f36cbe4a0"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b351b44a345d7365a2db6bb171c329ff60a5dca881e149fc69c0374ca573de71"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cb3ba1659b7ea8362939a894ed18d39e9bee1c1fb322a44486e9ceebbeff24c7"
+    sha256 cellar: :any_skip_relocation, sonoma:        "1f62eda3c07127c794a1ffe34fd94c3903bcdcfb7fdfe86d1a2e44655ae49c94"
+    sha256 cellar: :any_skip_relocation, ventura:       "1f73391abd8d6f38c3d39815ba4927cf62bd12b96db82d070dd420784379df52"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0334dca2e8a77f943f4fc0bfb43b540c7ae9c76452685df22bdbf1e049cee40c"
   end
 
   depends_on "pkgconf" => :build
@@ -25,8 +23,19 @@ class Asak < Formula
     depends_on "alsa-lib"
   end
 
+  # release version patch, upstream pr ref, https://github.com/chaosprint/asak/pull/24
+  patch do
+    url "https://github.com/chaosprint/asak/commit/303c9b916cb339e4371a682cb37b7cdc72fa023c.patch?full_index=1"
+    sha256 "e0afa58db64adc57c606aaa0846b7c766a121100e5e574e9a7c4578be439a7c5"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args
+
+    bash_completion.install "target/completions/asak.bash" => "asak"
+    fish_completion.install "target/completions/asak.fish" => "asak"
+    zsh_completion.install "target/completions/_asak" => "_asak"
+    man1.install "target/man/asak.1"
   end
 
   test do

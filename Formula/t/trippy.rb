@@ -1,24 +1,26 @@
 class Trippy < Formula
   desc "Network diagnostic tool, inspired by mtr"
   homepage "https://trippy.cli.rs/"
-  url "https://github.com/fujiapple852/trippy/archive/refs/tags/0.12.0.tar.gz"
-  sha256 "4baf5e9f4d4490148ca739af6dbf5234c79dc5f8882690575ade29ce7f9b60e8"
+  url "https://github.com/fujiapple852/trippy/archive/refs/tags/0.12.2.tar.gz"
+  sha256 "6f23549e5f398113ecd0d2f15c829f5ab84fcdf99dde9942c61746e72f990085"
   license "Apache-2.0"
   head "https://github.com/fujiapple852/trippy.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "92ed6abadc13f3ebb6df001aaab3cfe4d04f6c34d47ae74bdb6dbb2f6394d4c3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "652a8cf4bba73302c1e717071677393bb882c791ff9c18da466a4b156126c6bc"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "e5080deef349889e07a30eaad660424af92d14b737957a342563d097b2ba6575"
-    sha256 cellar: :any_skip_relocation, sonoma:        "2e03e321dde8ed24c82c395bebce9ca24455c815df5e68ea53fe896fec8e1631"
-    sha256 cellar: :any_skip_relocation, ventura:       "ed80b25cfae42930a318022cda6f765d3b73132ee2b1854afa287bae4a406d60"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2e9dd4e788e412388cb2e1e2cf5bb2e476595b08bb19e319ea3884837f7efd76"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "36d0b28c8033e6b2eb40082dee5e5588316f456cf8e34805cc8133b9aa25e68e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "836dd4b7dd3c4ec9a548ad32df52d9cd5d54d3a9f5a75a5b8ec722fd5f37142f"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "28a6e084ea6d69b4c20b3406fd409ac498cb3c7c05d6c0a3e3ace4e642c52ec2"
+    sha256 cellar: :any_skip_relocation, sonoma:        "18e43f600bbff05025c5202fbb94b856934eadc803227345a344d9bce08a91dc"
+    sha256 cellar: :any_skip_relocation, ventura:       "d997d0a7e7d125c93db5d221d7bcdd3fbdebee268e80a688146132a4fef7d10b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "772768bf07161004287a339a0a9b346534dd6c76c58ade1d6f69a8d0502abd49"
   end
 
   depends_on "rust" => :build
 
   def install
     system "cargo", "install", *std_cargo_args(path: "crates/trippy")
+
+    generate_completions_from_executable(bin/"trip", "--generate")
   end
 
   test do

@@ -1,8 +1,8 @@
 class Joern < Formula
   desc "Open-source code analysis platform based on code property graphs"
   homepage "https://joern.io/"
-  url "https://github.com/joernio/joern/archive/refs/tags/v4.0.180.tar.gz"
-  sha256 "0229fee7b68ec3e92c2b7c9b5fcafc9d61559b53b1887a71d33d6c567cc88fd3"
+  url "https://github.com/joernio/joern/archive/refs/tags/v4.0.200.tar.gz"
+  sha256 "e1cef414b0bc1ae650fb91d841705d350ba72b95e61356e29ed492817c4cd1e8"
   license "Apache-2.0"
 
   livecheck do
@@ -12,12 +12,12 @@ class Joern < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5babcf007fb9987aa3374ba17739348327d8e940bf41a79cfdaeffa977d91635"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "15e8b941c2c8afba2579c8e690df17353875bc188910e9fadecccd8df5371d14"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "e536020de4b7252541c4594211bb58debdf02d76632db5989250398d84e7eee6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "1f5e4933e0b109496c01c3b448f47daaf6617ad205211d8a27717db849a1bed6"
-    sha256 cellar: :any_skip_relocation, ventura:       "40127016024067780c98e703f0def18190c003759d60c98271066b46cccc1584"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f662c78fc4fded36e389a2be9dbe08d2ec062454e2cdf7560d92c9e2a91cff93"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e781d41e3e51ae1e046d23de31ea7b355350dab0d4a906b5b57e37863ebee586"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d183f43f8328f66d2fc77b33d83c45c0af47149025187d21c55fadc51d4bb73f"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "67c795792554324a120a2b45ee3964bab5f9af7e749d6d09f9e27857a59e7bd4"
+    sha256 cellar: :any_skip_relocation, sonoma:        "dc8c39ec765539905b6615de651c9fa6d8c88925ff339d3bad019d62f36745cd"
+    sha256 cellar: :any_skip_relocation, ventura:       "76f357b8e61205837090935e145d138d1f6c54e786e1ca72397da7580c4b7245"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "66c4d359c8aaee20ef1fd055b1dbbd75905d67b46b4d0c0bc9b9398d533d1919"
   end
 
   depends_on "sbt" => :build

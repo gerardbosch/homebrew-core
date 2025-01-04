@@ -6,16 +6,16 @@ class SyslogNg < Formula
   url "https://github.com/syslog-ng/syslog-ng/releases/download/syslog-ng-4.8.1/syslog-ng-4.8.1.tar.gz"
   sha256 "e8b8b98c60a5b68b25e3462c4104c35d05b975e6778d38d8a81b8ff7c0e64c5b"
   license all_of: ["LGPL-2.1-or-later", "GPL-2.0-or-later"]
-  revision 5
+  revision 7
   head "https://github.com/syslog-ng/syslog-ng.git", branch: "master"
 
   bottle do
-    sha256 arm64_sequoia: "85e2de9815eb659fda16528ed3c0829988ea4a4f4295cb3151a1710a1ae9318d"
-    sha256 arm64_sonoma:  "409fb238d2cb374609025c95bd62bc83bccfd48be977e216a9ba2f57995b930d"
-    sha256 arm64_ventura: "0042369fa68a1de0743dbe5a1dc52381d8831a7d6c998662cb6cbc2b37c1adf5"
-    sha256 sonoma:        "426d19147da303fb0c3a1c6c4986dae0834d579219cf7b384e3e2770ce20ada6"
-    sha256 ventura:       "6f69aa278313b477f50d83f0a95f46a2856dd4b0f30bdd23f10446bcf5941a46"
-    sha256 x86_64_linux:  "b69cb4c62833aa81900a46f7274f3c344e0bd371ecbdfc672da7a5250354526e"
+    sha256 arm64_sequoia: "15e990f2c3adaf4d62ebadd9de2343c13947271e23a914c251630d4a5d07f398"
+    sha256 arm64_sonoma:  "18f56d09819e902bf11c4c7e6e3a2fe37be482601eca6366fdc990ee7ba04534"
+    sha256 arm64_ventura: "6e9864ab82d991ae54e8fd7dcd616a15a60bddf5bb15d9e326bddcc4d7746aed"
+    sha256 sonoma:        "1c650033ccf22fdc4b3a5f7f23bf342189af9f1ca7f879c91d2579a3c1bca31a"
+    sha256 ventura:       "5dd3aaf133a0c1b3eb6400dca7700c7d20d54961f3a6c05b155b2f5abe2130c8"
+    sha256 x86_64_linux:  "7325b74f2d57df97cef339f682c9166f10ba2f5aea5a4200de64153169afe3bd"
   end
 
   depends_on "pkgconf" => :build

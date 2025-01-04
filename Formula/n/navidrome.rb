@@ -1,19 +1,18 @@
 class Navidrome < Formula
   desc "Modern Music Server and Streamer compatible with Subsonic/Airsonic"
   homepage "https://www.navidrome.org"
-  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.53.3.tar.gz"
-  sha256 "e0d5b0280c302938177b2241a5f9868a4b40cd603ddf5acb2ff0f9c40e44c13a"
+  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.54.3.tar.gz"
+  sha256 "d8d1a6697ddeb28ef60b8c04da1026f3bf15aea6987e04f524c7f548ed06c100"
   license "GPL-3.0-only"
   head "https://github.com/navidrome/navidrome.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "257ab85c8b8644bcd0c3efacf5f9baaab6b03bd340ac2fb054b617d493e7af10"
-    sha256 cellar: :any,                 arm64_sonoma:  "bd075df7bf8f6646a0845c593d3c848880b010c326ac471a511b3a71e622db37"
-    sha256 cellar: :any,                 arm64_ventura: "5502c591958cd682ed5641a77ff12c2f705551b09e02eafa4ccee21fe291f17b"
-    sha256 cellar: :any,                 sonoma:        "b04fb011646ab0dc5e9f830e2f1cae9bfff0e17e8d55783ac3f89bcda586c0d9"
-    sha256 cellar: :any,                 ventura:       "528486a0908d40a33c92c42882b8008301c647ff20df809ddc7f353f24d907c8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a0b621aae535c95904be115de7e3b8c640c9b1b01906295b54ab917bf5a5b3f5"
+    sha256 cellar: :any,                 arm64_sequoia: "4a35464f12d4ee90bff8049a22a1fbba51d0c5be0921926225e6614c19daa83a"
+    sha256 cellar: :any,                 arm64_sonoma:  "b231e9d3dda3b1ef6a2523cca591015a7eef8b1ed207be9d9d03b7e4a66df740"
+    sha256 cellar: :any,                 arm64_ventura: "db1171f905b0597c30585b488ab53ca92144efdd0ceda0ef2e861b3061a0049e"
+    sha256 cellar: :any,                 sonoma:        "1595242c02cc0f2589f7abf3c9d43d99c76da9e2c443cd067986ccba782e72c3"
+    sha256 cellar: :any,                 ventura:       "c2a7829d0ae5cce42f38b9957bb8c030e41464bad26cc42ad4c481cf3126cc61"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8fa59487e8cdf24705ca67b02a86b39605edef18bbe455f10163a6d953bfc72d"
   end
 
   depends_on "go" => :build
@@ -31,18 +30,18 @@ class Navidrome < Formula
 
     system "make", "setup"
     system "make", "buildjs"
-    system "go", "build", *std_go_args(ldflags:), "-buildvcs=false"
+    system "go", "build", *std_go_args(ldflags:), "-buildvcs=false", "-tags=netgo"
   end
 
   test do
     assert_equal "#{version} (source_archive)", shell_output("#{bin}/navidrome --version").chomp
     port = free_port
     pid = spawn bin/"navidrome", "--port", port.to_s
-    sleep_count = (OS.mac? && Hardware::CPU.intel?) ? 105 : 30
-    sleep sleep_count
+    sleep 20
+    sleep 60 if OS.mac? && Hardware::CPU.intel?
     assert_equal ".", shell_output("curl http://localhost:#{port}/ping")
   ensure
-    Process.kill "TERM", pid
+    Process.kill "KILL", pid
     Process.wait pid
   end
 end

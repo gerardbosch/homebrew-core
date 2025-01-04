@@ -1,18 +1,18 @@
 class Broot < Formula
   desc "New way to see and navigate directory trees"
   homepage "https://dystroy.org/broot/"
-  url "https://github.com/Canop/broot/archive/refs/tags/v1.44.2.tar.gz"
-  sha256 "e1b78354c21680914a07ed4b856257c83ef873b878ef281bd2d1aed7fcba3828"
+  url "https://github.com/Canop/broot/archive/refs/tags/v1.44.5.tar.gz"
+  sha256 "b8e46fc99c0444bdb7a13c674901cdccc7af7c3c2ee54fde1c901ce517885a47"
   license "MIT"
   head "https://github.com/Canop/broot.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8a94de1e614521fab990d17d959bb71d2351311384517c7ad0b5e83ef8e1fd04"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7b4ba173f2232e82fe75e3d3acd846d89af63e6b5cb7b21f1aec992234bb2f19"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "d68abb5035d1de6302fef8705ea8ff8da8a7604f7e4054469f445dfc00e0edf4"
-    sha256 cellar: :any_skip_relocation, sonoma:        "518d3f8ff6274c925f4df10afd26472c54b6af326f83a2f355467f722e90070a"
-    sha256 cellar: :any_skip_relocation, ventura:       "436906062760a229b4a72c07402029e64c7c6980e8199f229b3c96b7e709d912"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b407acb85b70f6fb9077d67d51ab77c77c537595b7a8fd50e1427c72b45cc6b3"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "22f26bfd9b51c7160b837e8576c8febcb596f7aef3e2abdbf978d95069226250"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6640d8ad9fcc9a79ec2611bbf9bcc5a278fe77623eeba87d79f5e38f3edd4aef"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "91e781e3abaa63a5a84b247bc744df1095ad85d90c12d58a1fe95dc7fca62d0b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "edd1f0a2570ed892dcd1c75fa7b15d1860eef657c669516aeaec3155f509798b"
+    sha256 cellar: :any_skip_relocation, ventura:       "001ad15a67b686ce1ade72d9ac4e97dbdebecb75dd591846f9a0959a3e68d235"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f6d94788d972fdb68d729afd62814b1c80de0df8f2dedf560a264130350feeda"
   end
 
   depends_on "rust" => :build
@@ -38,11 +38,8 @@ class Broot < Formula
     fish_completion.install "#{out_dir}/br.fish"
     zsh_completion.install "#{out_dir}/_broot"
     zsh_completion.install "#{out_dir}/_br"
-    # Bash completions are not compatible with Bash 3 so don't use v1 directory.
-    # bash: complete: nosort: invalid option name
-    # Issue ref: https://github.com/clap-rs/clap/issues/5190
-    (share/"bash-completion/completions").install "#{out_dir}/broot.bash" => "broot"
-    (share/"bash-completion/completions").install "#{out_dir}/br.bash" => "br"
+    bash_completion.install "#{out_dir}/broot.bash" => "broot"
+    bash_completion.install "#{out_dir}/br.bash" => "br"
   end
 
   test do

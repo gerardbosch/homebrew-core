@@ -1,27 +1,34 @@
 class Traefik < Formula
   desc "Modern reverse proxy"
   homepage "https://traefik.io/"
-  url "https://github.com/traefik/traefik/releases/download/v3.2.2/traefik-v3.2.2.src.tar.gz"
-  sha256 "40564d08776657f323134ebce655457b43b4d415e6dfdaaab569a985648d5a1c"
+  url "https://github.com/traefik/traefik/releases/download/v3.2.3/traefik-v3.2.3.src.tar.gz"
+  sha256 "957997222314116959ce2ff68b261e2b2bc5292566e799dd21e7512b5782feb7"
   license "MIT"
+  revision 1
   head "https://github.com/traefik/traefik.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "057f17247baa13c5f1301940e78ab5f40ce055606d6838d85cb74d40874caa62"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "057f17247baa13c5f1301940e78ab5f40ce055606d6838d85cb74d40874caa62"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "057f17247baa13c5f1301940e78ab5f40ce055606d6838d85cb74d40874caa62"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ef4a3d507b4949d10e8b601c2808bdcd0a41f4e9444d089ebbfd9e893b470199"
-    sha256 cellar: :any_skip_relocation, ventura:       "ef4a3d507b4949d10e8b601c2808bdcd0a41f4e9444d089ebbfd9e893b470199"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e42ed9fce0201a10602f2f83999ea1c5d7cb3f9541a621561d3031d7eae57b4d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4278eda8ff317f2197e0dd4b3dbf7930347353b6d87b2eda8102f1fa95d53cc1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4278eda8ff317f2197e0dd4b3dbf7930347353b6d87b2eda8102f1fa95d53cc1"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4278eda8ff317f2197e0dd4b3dbf7930347353b6d87b2eda8102f1fa95d53cc1"
+    sha256 cellar: :any_skip_relocation, sonoma:        "49637254a846716d29d7ff3fe4b6541fa4cb6fda3b4d82abc5327a9572f93ef4"
+    sha256 cellar: :any_skip_relocation, ventura:       "49637254a846716d29d7ff3fe4b6541fa4cb6fda3b4d82abc5327a9572f93ef4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3734b0968cb61e192907d5bc9fd201ecd45cec2ddde2a3afd54e4abd638a9c0e"
   end
 
   depends_on "go" => :build
+  depends_on "node@22" => :build
+  depends_on "yarn" => :build
 
   def install
     ldflags = %W[
       -s -w
       -X github.com/traefik/traefik/v#{version.major}/pkg/version.Version=#{version}
     ]
+    cd "webui" do
+      system "yarn", "install", "--immutable"
+      system "yarn", "build"
+    end
     system "go", "generate"
     system "go", "build", *std_go_args(ldflags:), "./cmd/traefik"
   end
@@ -59,6 +66,10 @@ class Traefik < Formula
       sleep 1
       cmd_ui = "curl -sIm3 -XGET http://127.0.0.1:#{ui_port}/dashboard/"
       assert_match "200 OK", shell_output(cmd_ui)
+
+      # Make sure webui assets for dashboard are present at expected destination
+      cmd_ui = "curl -XGET http://127.0.0.1:#{ui_port}/dashboard/"
+      assert_match "<title>Traefik</title>", shell_output(cmd_ui)
     ensure
       Process.kill(9, pid)
       Process.wait(pid)

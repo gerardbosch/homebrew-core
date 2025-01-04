@@ -2,7 +2,7 @@ class Ledger < Formula
   desc "Command-line, double-entry accounting tool"
   homepage "https://ledger-cli.org/"
   license "BSD-3-Clause"
-  revision 6
+  revision 7
   head "https://github.com/ledger/ledger.git", branch: "master"
 
   stable do
@@ -48,13 +48,13 @@ class Ledger < Formula
   end
 
   bottle do
-    rebuild 2
-    sha256 cellar: :any,                 arm64_sequoia: "a23d59fe87c4eb5e668c0636de0286b1a9ff8f5d1e823e066b5c74315a63a68b"
-    sha256 cellar: :any,                 arm64_sonoma:  "218ed68a0e22d7bd204f95da731524bc8aa2655ef6120abd408939bf5d994709"
-    sha256 cellar: :any,                 arm64_ventura: "4ddcb1fccd738eb25f3f34d7d385a6f01f6d33bf6171ad4c04cb273b165bc385"
-    sha256 cellar: :any,                 sonoma:        "c9c7cdde58c09a55707cc4275ae657324aa207dc8eeed4b41edc41cc02f3907b"
-    sha256 cellar: :any,                 ventura:       "2339d91e5735e72342ccb4e0890ad19e24e5018e4e5050a09e57a3d3639b98e3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1ffcf606599116dd135bb202d28aada69e978b017ef2f22735b9b68549919509"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "ce45119d338d9e00956307b4721d33440f14d1907ca54da02fe1ca25a5471459"
+    sha256 cellar: :any,                 arm64_sonoma:  "d159a1cfe29825f3c314a4594355fab005ace773c218a9bb26cdf7db0bfc6ba1"
+    sha256 cellar: :any,                 arm64_ventura: "ab24ca08a201ceef084c01fb75d9f7610f841cbd471f5c906caff3a3e6f3ba93"
+    sha256 cellar: :any,                 sonoma:        "088a64661ab9e5cacc46563de601e06b79f8a75d4c7502d043df15335a906830"
+    sha256 cellar: :any,                 ventura:       "f149928e3e4c40bf16d6c237fe8bb7e54cc5e0651e993e6b30cf3fa887f61bb3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "601f17b3901dae3f78185c3e5a911f8d04fd3795941f7554567d0e820c9c26a0"
   end
 
   depends_on "cmake" => :build
@@ -96,7 +96,7 @@ class Ledger < Formula
     (pkgshare/"examples").install Dir["test/input/*.dat"]
     pkgshare.install "contrib"
     elisp.install Dir["lisp/*.el", "lisp/*.elc"]
-    bash_completion.install pkgshare/"contrib/ledger-completion.bash"
+    bash_completion.install pkgshare/"contrib/ledger-completion.bash" => "ledger"
   end
 
   test do

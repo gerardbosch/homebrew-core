@@ -1,24 +1,10 @@
 class TreeSitter < Formula
   desc "Parser generator tool and incremental parsing library"
   homepage "https://tree-sitter.github.io/"
+  url "https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.24.6.tar.gz"
+  sha256 "03c7ee1e6f9f4f3821fd4af0ae06e1da60433b304a73ff92ee9694933009121a"
   license "MIT"
   head "https://github.com/tree-sitter/tree-sitter.git", branch: "master"
-
-  # Remove stable block when patch is no longer needed.
-  stable do
-    url "https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.24.4.tar.gz"
-    sha256 "d704832a6bfaac8b3cbca3b5d773cad613183ba8c04166638af2c6e5dfb9e2d2"
-
-    # Fix Neovim freezing in some configurations.
-    # See: https://github.com/neovim/neovim/issues/31163
-    #      https://github.com/tree-sitter/tree-sitter/issues/3930
-    #      https://github.com/tree-sitter/tree-sitter/pull/3898
-    # Remove in next release.
-    patch do
-      url "https://github.com/tree-sitter/tree-sitter/commit/5d1be545c439eba4810f34a14fef17e5f76df6c0.patch?full_index=1"
-      sha256 "5c083354226f945992ec401a6c469b2a7bf9419d7599bca749254b3b28c841ea"
-    end
-  end
 
   livecheck do
     url :stable
@@ -26,13 +12,12 @@ class TreeSitter < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "b4932e1ed3dd2a8fef9ec480f3bf5175005badefa432f7f2f255cb648a032790"
-    sha256 cellar: :any,                 arm64_sonoma:  "2008cda365e4dbf3e530236811fa37f2a14e65418fdf90e4b7dbd585a076325a"
-    sha256 cellar: :any,                 arm64_ventura: "4c69b394b5dcff232bc9662abfa3d38865ce5d8aced92565107b1ced4a9666cb"
-    sha256 cellar: :any,                 sonoma:        "9e10a26f5bd3d668720bb7cb152f9985fd0b758b07fbe7e56b3bc15c39172129"
-    sha256 cellar: :any,                 ventura:       "037379b3381b736dc9cdb8109db8726a9f80cb8d785077f7b85bead89f910306"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1887aaeef0cf0e07a7e8570332b875a70fd25a6cf0c18c76fe3a7a919a59f5d8"
+    sha256 cellar: :any,                 arm64_sequoia: "2eff05b28890b5e88a377c4de9cd927294d1eeace16f4989f960562bc7b94ce8"
+    sha256 cellar: :any,                 arm64_sonoma:  "a316c95245d58fcdbc7673b01fb4bd639d704c33bb5bd73bff97a1c990c555b5"
+    sha256 cellar: :any,                 arm64_ventura: "674670b8c2f9f14177d57b17f7f3519b8d99ae10e84ad4565ae251eaebd119b3"
+    sha256 cellar: :any,                 sonoma:        "5028678b0e8250f3bd631851a75d474fa426d70188a3cda86d0ef56601adfad4"
+    sha256 cellar: :any,                 ventura:       "cce83b2d3b83c59564e6e30a05e49fa6839302b1b7a7ac6b3909143e71f15b51"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e4038d4a7ddfe5378baaf193d5f34c5040650bffb978bb604668b9b9e1f92118"
   end
 
   depends_on "rust" => :build
