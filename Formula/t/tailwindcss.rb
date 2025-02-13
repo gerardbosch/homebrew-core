@@ -1,8 +1,8 @@
 class Tailwindcss < Formula
   desc "Utility-first CSS framework"
   homepage "https://tailwindcss.com"
-  url "https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.0.4.tgz"
-  sha256 "b75edc09ae4e5b4e9b3d6817f31c083346a23089a80591b62e4ff9de2cb9e300"
+  url "https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.0.6.tgz"
+  sha256 "faf6dcf69502676edf5068df409c3af2ae78e81afa2aee03313cd287be8cc40a"
   license "MIT"
   head "https://github.com/tailwindlabs/tailwindcss.git", branch: "next"
 
@@ -15,25 +15,69 @@ class Tailwindcss < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256                               arm64_sequoia: "305aea1ec37a55c2833681a410e7ce5218cbd8ff45a9538cbd59230447ef14b6"
-    sha256                               arm64_sonoma:  "ee848c629b5b22ec97ce2ae30c5c5ebdd6b7904ea780161ed9ccaaf1b046449a"
-    sha256                               arm64_ventura: "a5f166c9d0c9277a3d9ad2a2ac1cd6154c11346a5e61b57e24c3e635667deb7e"
-    sha256                               sonoma:        "17a16c0392a4e04666d4e948259affaacb096dc311449239926502c78147f5ee"
-    sha256                               ventura:       "5b911567cf0e39d764b3cc1961c4cca8ad08f83af85dfa0580f7ddb6b3186dcd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a29ae308b2b26cfdf64dbe1641aec35628623ef63921b0b3ca056ef2bc893abc"
+    sha256                               arm64_sequoia: "55436f691a463ba7552405e9dfb5d82221c55e2eb21c38437d699b9af3e9693e"
+    sha256                               arm64_sonoma:  "027501d12bd1d3d46edc724495ac05df61d127e4b2af1afebcc2ff4be76ca22b"
+    sha256                               arm64_ventura: "2e1c80a264d4601d56b3cf764fe701b9758b96b6be6b3d821621cfa15c58226e"
+    sha256                               sonoma:        "4f319b81ddcd32c7dd18d050956d37f58d0c90553f63e0fcb191c1ef2e49d2fc"
+    sha256                               ventura:       "ae2dd159e61b5aee7382d93a41214c3b05ab889346d7c615500a09791d41d613"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "593b6d5cd6bb0a0c806bad00c9de20d69856210c3ba26815e04db1f58f35445d"
   end
 
   depends_on "node"
 
+  # Imitate standalone CLI and include first-party plugins
+  # https://github.com/tailwindlabs/tailwindcss/blob/main/packages/%40tailwindcss-standalone/package.json#L28-L31
+  resource "@tailwindcss/aspect-ratio" do
+    url "https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz"
+    sha256 "858df3d82234e12e59e6f8bd5d272d1e6c65aefcb4263dac84d0331f5ef00455"
+  end
+
+  resource "@tailwindcss/forms" do
+    url "https://registry.npmjs.org/@tailwindcss/forms/-/forms-0.5.10.tgz"
+    sha256 "f5003f088c8bfeef2d2576932b0521e29f84b7ca68e59afd709fef75bd4fe9bb"
+  end
+
+  resource "@tailwindcss/typography" do
+    url "https://registry.npmjs.org/@tailwindcss/typography/-/typography-0.5.16.tgz"
+    sha256 "41bb083cd966434072dd8a151c8989e1cfa574eb5ba580b719da013d32b6828e"
+  end
+
   def install
+    resources.each do |r|
+      system "npm", "install", *std_npm_args(prefix: false), r.cached_download
+    end
     system "npm", "install", *std_npm_args
-    bin.install_symlink libexec.glob("bin/*")
+    bin.install libexec.glob("bin/*")
+    bin.env_script_all_files libexec/"bin", NODE_PATH: libexec/"lib/node_modules/@tailwindcss/cli/node_modules"
   end
 
   test do
-    (testpath/"input.css").write("@tailwind base;")
-    system bin/"tailwindcss", "-i", "input.css", "-o", "output.css"
+    # https://github.com/tailwindlabs/tailwindcss/blob/main/integrations/cli/standalone.test.ts
+    (testpath/"index.html").write <<~HTML
+      <div className="prose">
+        <h1>Headline</h1>
+      </div>
+      <input type="text" class="form-input" />
+      <div class="aspect-w-16"></div>
+    HTML
+
+    (testpath/"input.css").write <<~CSS
+      @tailwind base;
+      @import "tailwindcss";
+      @import "tailwindcss/theme" theme(reference);
+      @import "tailwindcss/utilities";
+
+      @plugin "@tailwindcss/forms";
+      @plugin "@tailwindcss/typography";
+      @plugin "@tailwindcss/aspect-ratio";
+    CSS
+
+    system bin/"tailwindcss", "--input", "input.css", "--output", "output.css"
     assert_path_exists testpath/"output.css"
+
+    output = (testpath/"output.css").read
+    assert_match ".form-input {", output
+    assert_match ".prose {", output
+    assert_match ".aspect-w-16 {", output
   end
 end
