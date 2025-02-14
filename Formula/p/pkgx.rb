@@ -1,18 +1,18 @@
 class Pkgx < Formula
   desc "Standalone binary that can run anything"
   homepage "https://pkgx.sh"
-  url "https://github.com/pkgxdev/pkgx/archive/refs/tags/v2.2.tar.gz"
-  sha256 "3ff6f6a40ed07df9a2904941bb3ed2303d409ef3ce501b6667b5e5a4ed7c9712"
+  url "https://github.com/pkgxdev/pkgx/archive/refs/tags/v2.3.1.tar.gz"
+  sha256 "dcaf2e32f333b3ef3eb7889c4c277ef61e60ed09d216cfbf45ad1a1c38867ec5"
   license "Apache-2.0"
   head "https://github.com/pkgxdev/pkgx.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6e22a41ec6217cbfcf72c897ac4f7734f2cb994d7f6cb370665913665246e72e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2da9e65435edae4ad738e3ea9a91ef20d21e29192794b2bb9fcb6f1b0c9bbe04"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "64ebd49230eb47597283597fb6ba73e53837cdc099fd0843d3d761ec624271a5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "4bca688c06bfca52db82aeee08a086af2b34c73f1a1b9370ff25d46f00338aac"
-    sha256 cellar: :any_skip_relocation, ventura:       "a627790c732a53cbbc476bc9f2d3920e7e3ec30ccf03b9888aeaa8953144a261"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3f86bb043d4bd636bbe42e1eaee46618cf4c68692adabc377e3069d0d73f63c1"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d3442bf0ba5748bb19a4078063f1c851b93fff55118bc4ea2824b150bbaa053f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0c15ccb801811e021199f586f2b0987aea842ef9d34c9cb15f382efb7d5a8071"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "90a02dcf59927fd0de9a808362666ed2bb96657e315424b8ce0c025e2db6af6f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b4017b192e61e06dbd63d7b7b463160be22d9241f3fb821acc399ca6393eae1a"
+    sha256 cellar: :any_skip_relocation, ventura:       "dfb1e42af628145d3890be9d3987d7276349e956426301d2306db4de970ed63a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bc119341cd736a284a82b506c7032a11a80ef9b16ab8a29d7c4388485b1cbce0"
   end
 
   depends_on "rust" => :build

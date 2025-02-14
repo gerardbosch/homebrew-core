@@ -265,7 +265,6 @@ jobs:
           gh pr merge "$REPLACEMENT_PR" \
             --auto \
             --merge \
-            --delete-branch \
             --match-head-commit "$(git rev-parse HEAD)" \
             --repo "$GITHUB_REPOSITORY"
 

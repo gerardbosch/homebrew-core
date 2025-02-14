@@ -470,7 +470,6 @@ jobs:
           gh pr merge "$PR" \
             --auto \
             --merge \
-            --delete-branch \
             --match-head-commit "$EXPECTED_SHA" \
             --repo "$GITHUB_REPOSITORY"
 

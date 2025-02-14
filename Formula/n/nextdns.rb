@@ -1,18 +1,18 @@
 class Nextdns < Formula
   desc "CLI for NextDNS's DNS-over-HTTPS (DoH)"
   homepage "https://nextdns.io"
-  url "https://github.com/nextdns/nextdns/archive/refs/tags/v1.44.3.tar.gz"
-  sha256 "ac77f24eb0bded216b57a82ca93960547c07561080df3fc20d1b363e38b7f3af"
+  url "https://github.com/nextdns/nextdns/archive/refs/tags/v1.44.6.tar.gz"
+  sha256 "81f697646a8d363293ab18c3bf45e80f405c284547794da37565bbf43d3023ab"
   license "MIT"
   head "https://github.com/nextdns/nextdns.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0685ea4c5cb55563548f3c94bce4c7e4cf0582f8d85ef494bc77c6e7aaaa54d5"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c5ccb2c00b8fe08cdb03294fdd53e00222fc29c4b2c5f3d6475ae562dcbe0071"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "909ba619d29f604a6d6cbe48251db4c4ce0f2864d281a9cbdc629070fcbb6637"
-    sha256 cellar: :any_skip_relocation, sonoma:        "649735a69c513fcb0187fcf4ffb86d0b97ff0f873a905d4475ab1c83d08d69ef"
-    sha256 cellar: :any_skip_relocation, ventura:       "adfa3676d6a880a0adade9ae4f90ef15ac8fb5d37ad42b8cf4a274a1114113c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4911d99e1ab572c7bb0e26d14f6b0ceb2fafea634b4f81996d098ccda1b901a4"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "12c9e9a5456452f673919b66d6af187af345fe3e732e808dbe90cfb23e338660"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4bf866c3b162efb5dafdd123396da2c98bd4e11b800ec78a67af46765e1dfb02"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "723e151d10bad60c7eb5b0121cefd7fc8ab7d9b429cbe58ac015654a6b1ca958"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e56f0c75689b84b6deb79c210779ec544faf9476ccb20220baa29865adb5616d"
+    sha256 cellar: :any_skip_relocation, ventura:       "37f04be89c69bc3acc359b2353a2b4f2f0a5d07a4fdf39782bbb6a3b8381a5aa"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f5bff941057570f209d9f3ffff8aa44f777d4d0c6c0e86ba774a11b55f07bb80"
   end
 
   depends_on "go" => :build

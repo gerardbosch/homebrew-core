@@ -167,19 +167,7 @@ jobs:
       - name: Check bottle attestation
         id: attestation
         if: always()
-        shell: brew ruby {0}
-        env:
-          HOMEBREW_FORMULA: ${{ matrix.name }}
-        run: |
-          require "attestation"
-          formula = Formulary.factory(ENV.fetch("HOMEBREW_FORMULA"))
-          bottle = formula.bottle
-
-          # TODO: Check attestations for all os-arch variations
-          exit 0 if bottle.blank?
-
-          bottle.fetch
-          Homebrew::Attestation.check_core_attestation(bottle)
+        run: brew verify --os=all --arch=all "$FORMULA"
 
       - name: Report attestation issues
         if: failure() && steps.attestation.conclusion == 'failure'
